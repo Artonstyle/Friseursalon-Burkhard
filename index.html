@@ -1,25 +1,50 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💈 Friseursalon Burkhard – Dark Night Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<style>
 :root {
-  --bg-dark: #0a0a0a;
-  --glass: rgba(255,255,255,0.08);
-  --accent: #FFD700;
-  --accent-glow: rgba(255,215,0,0.8);
-  --text-light: #e0e0e0;
-  --shadow: 0 0 35px rgba(0,0,0,0.8);
+  --bg-dark: #0a0a0a;
+  --glass: rgba(255,255,255,0.08);
+  --accent: #FFD700; /* Gold-Akzentfarbe beibehalten */
+  --accent-glow: rgba(255,215,0,0.8);
+  --text-light: #e0e0e0;
+  --shadow: 0 0 35px rgba(0,0,0,0.8);
 }
 body { margin:0; font-family: 'Roboto', sans-serif; background: var(--bg-dark); color: var(--text-light); line-height:1.6; }
 .container { width:90%; max-width:1200px; margin:0 auto; }
+/* Global Section Heading Style */
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+/* Navigation CTA Button Styling (Hinzugefügt) */
+.cta-nav {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    color: var(--bg-dark) !important; /* Dunkelgrauer Text auf Gold */
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transition: 0.3s;
+}
+.cta-nav:hover {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+/* Beibehalten Sie den Rest des ursprünglichen CSS */
 header { position: sticky; top:0; z-index:1000; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow); }
 header .container { display:flex; justify-content:space-between; align-items:center; padding:15px 0; }
 .logo img { height:50px; }
-nav ul { display:flex; gap:25px; list-style:none; margin:0; padding:0; }
+nav ul { display:flex; gap:25px; list-style:none; margin:0; padding:0; align-items: center; /* Zentriert den CTA-Button */ }
 nav a { color: var(--text-light); text-decoration:none; font-weight:400; transition:0.3s; }
 nav a:hover { color:var(--accent); text-shadow:0 0 12px var(--accent-glow); }
 #hero { position: relative; height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; }
@@ -27,7 +52,7 @@ nav a:hover { color:var(--accent); text-shadow:0 0 12px var(--accent-glow); }
 .hero-content { position: relative; z-index:2; text-align:center; backdrop-filter: blur(12px); background: rgba(0,0,0,0.5); padding:40px; border-radius:20px; }
 .hero-content h2 { font-family:'Playfair Display', serif; font-size:3rem; margin-bottom:20px; color:#FFD700; text-shadow:0 0 15px var(--accent-glow); }
 .hero-content p { font-size:1.2rem; margin-bottom:30px; color: #e0e0e0; text-shadow:0 0 10px rgba(0,0,0,0.7); }
-.cta-primary { display:inline-block; padding:15px 40px; border-radius:50px; font-weight:700; color:#000; background:var(--accent); text-shadow:0 0 15px #000; box-shadow:0 0 35px var(--accent-glow); transition:0.3s; }
+.cta-primary { display:inline-block; padding:15px 40px; border-radius:50px; font-weight:700; color:#000; background:var(--accent); text-shadow:0 0 15px #000; box-shadow:0 0 35px var(--accent-glow); transition:0.3s; text-decoration: none; }
 .cta-primary:hover { background:transparent; border:2px solid var(--accent); color:var(--accent); box-shadow:0 0 50px var(--accent-glow); }
 .section-padding { padding:100px 0; }
 .price-grid { display:grid; gap:30px; grid-template-columns: repeat(auto-fit,minmax(350px,1fr)); }
@@ -41,99 +66,10 @@ nav a:hover { color:var(--accent); text-shadow:0 0 12px var(--accent-glow); }
 .gallery-grid { display:grid; gap:20px; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
 .gallery-grid img { width:100%; height:250px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,215,0,0.2); transition:0.3s; }
 .gallery-grid img:hover { transform:scale(1.05); border:2px solid var(--accent); box-shadow:0 0 35px var(--accent-glow); }
+/* Team-Member-Styles (unbenutzt, aber beibehalten) */
 .team-member img { width:150px; height:150px; border-radius:50%; border:4px solid var(--accent); object-fit:cover; box-shadow:0 0 20px var(--accent-glow); transition:0.3s; }
 .team-member img:hover { transform:scale(1.1); box-shadow:0 0 45px var(--accent-glow); }
 .fade-in { opacity:0; transform:translateY(30px); transition:all 0.8s ease-in-out; }
 .fade-in.visible { opacity:1; transform:translateY(0); }
 footer { background: var(--bg-dark); color:#888; text-align:center; padding:25px 0; border-top:1px solid rgba(255,255,255,0.1); }
 @media(max-width:768px){ .container{width:95%; } .price-grid, .gallery-grid, .team-grid{grid-template-columns:1fr;} }
-</style>
-</head>
-<body>
-<header>
-<div class="container">
-<h1 class="logo"><a href="/"><img src="https://i.du.eu/d/9070/f7yoh7mn.png" alt="Logo"></a></h1>
-<nav id="nav">
-<ul>
-<li><a href="#preise">Preise</a></li>
-<li><a href="#galerie">Galerie</a></li>
-<li><a href="#team">Team</a></li>
-<li><a href="#kontakt">Kontakt</a></li>
-<li><a href="tel:062072472" class="cta-button">📞 Anrufen</a></li>
-</ul>
-</nav>
-</div>
-</header>
-<section id="hero">
-<div class="hero-overlay"></div>
-<div class="hero-content fade-in">
-<h2>💈 Friseursalon Burkhard</h2>
-<p>Exklusive Haarschnitte, Colorationen & Styling in elegantem Ambiente.</p>
-<a href="tel:062072472" class="cta-primary">📞 Jetzt Termin vereinbaren</a>
-</div>
-</section>
-<section id="preise" class="section-padding fade-in">
-<div class="container">
-<h3>PREISE & LEISTUNGEN</h3>
-<div class="price-grid">
-<div class="price-category">
-<h4>✂️ Damen & Styling</h4>
-<table>
-<tr><th>Leistung</th><th>Preis</th></tr>
-<tr><td>Waschen - Schneiden - Föhnen</td><td>ab 28€</td></tr>
-<tr><td>Waschen - Föhnen</td><td>ab 15€</td></tr>
-<tr><td>Farbe</td><td>ab 55€</td></tr>
-<tr><td>Strähnen - Folien</td><td>ab 70€</td></tr>
-<tr><td>Strähnen - Haube</td><td>ab 55€</td></tr>
-<tr><td>Dauerwelle komplett</td><td>ab 60€</td></tr>
-<tr><td>Hochsteckfrisur</td><td>ab 40€</td></tr>
-<tr><td>Make-up</td><td>ab 30€</td></tr>
-<tr><td>Haarkur</td><td>ab 5€</td></tr>
-</table>
-</div>
-<div class="price-category">
-<h4>💈 Herren</h4>
-<table>
-<tr><th>Leistung</th><th>Preis</th></tr>
-<tr><td>Waschen - Schneiden - Föhnen</td><td>ab 20€</td></tr>
-<tr><td>Bart Schneiden/Rasur</td><td>ab 5€</td></tr>
-<tr><td>Bart Färben</td><td>ab 10€</td></tr>
-<tr><td>Dauerwelle</td><td>ab 8€</td></tr>
-<tr><td>Face Waxing</td><td>ab 8€</td></tr>
-</table>
-</div>
-<div class="price-category">
-<h4>🕌 Nach Orientalischer Art</h4>
-<table>
-<tr><th>Leistung</th><th>Preis</th></tr>
-<tr><td>Augenbrauen-Zupfen</td><td>ab 5€</td></tr>
-<tr><td>Augenbrauen-Färben</td><td>ab 5€</td></tr>
-<tr><td>Wimpern-Färben</td><td>ab 5€</td></tr>
-</table>
-</div>
-<div class="price-category">
-<h4>👶 Kinder</h4>
-<table>
-<tr><th>Leistung</th><th>Preis</th></tr>
-<tr><td>Haarschnitt</td><td>ab 15-20€</td></tr>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="galerie" class="section-padding fade-in">
-<div class="container">
-<h3>UNSERE STYLES</h3>
-<div class="gallery-grid">
-<img src="https://source.unsplash.com/400x300/?haircut,women" alt="Style 1">
-<img src="https://source.unsplash.com/400x300/?haircut,men" alt="Style 2">
-<img src="https://source.unsplash.com/400x300/?hairstyle,color" alt="Style 3">
-<img src="https://source.unsplash.com/400x300/?hair,salon" alt="Style 4">
-<img src="https://source.unsplash.com/400x300/?barber,style" alt="Style 5">
-<img src="https://source.unsplash.com/400x300/?haircut,modern" alt="Style 6">
-<img src="https://source.unsplash.com/400x300/?hair,trend" alt="Style 7">
-</div>
-</div>
-</section>
-</body>
-</html>
