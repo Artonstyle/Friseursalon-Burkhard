@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💈 Friseursalon Burkhard – Dark Night Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #0a0a0a;
+  --glass: rgba(255,255,255,0.05);
+  --accent: #FFD700;
+  --accent-glow: rgba(255,215,0,0.8);
+  --text-light: #e0e0e0;
+  --shadow: 0 0 35px rgba(0,0,0,0.8);
+}
+body { margin:0; font-family: 'Roboto', sans-serif; background: var(--bg-dark); color: var(--text-light); line-height:1.6; }
+.container { width:90%; max-width:1200px; margin:0 auto; }
+header { position: sticky; top:0; z-index:1000; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow); }
+header .container { display:flex; justify-content:space-between; align-items:center; padding:15px 0; }
+.logo img { height:50px; }
+nav ul { display:flex; gap:25px; list-style:none; margin:0; padding:0; }
+nav a { color: var(--text-light); text-decoration:none; font-weight:400; transition:0.3s; }
+nav a:hover { color:var(--accent); text-shadow:0 0 12px var(--accent-glow); }
+#hero { position: relative; height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+.hero-overlay { position:absolute; inset:0; background: rgba(0,0,0,0.5); z-index:1; }
+.hero-content { position: relative; z-index:2; text-align:center; backdrop-filter: blur(8px); background: rgba(255,255,255,0.05); padding:40px; border-radius:20px; }
+.hero-content h2 { font-family:'Playfair Display', serif; font-size:3rem; margin-bottom:20px; text-shadow:0 0 15px var(--accent-glow); }
+.hero-content p { font-size:1.2rem; margin-bottom:30px; text-shadow:0 0 10px rgba(0,0,0,0.7); }
+.cta-primary { display:inline-block; padding:15px 40px; border-radius:50px; font-weight:700; color:#000; background:var(--accent); text-shadow:0 0 15px #000; box-shadow:0 0 35px var(--accent-glow); transition:0.3s; }
+.cta-primary:hover { background:transparent; border:2px solid var(--accent); color:var(--accent); box-shadow:0 0 50px var(--accent-glow); }
+.section-padding { padding:100px 0; }
+.price-grid, .gallery-grid, .team-grid { display:grid; gap:30px; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); }
+.price-category, .team-member { background:var(--glass); backdrop-filter: blur(18px); border-radius:20px; padding:30px; box-shadow:var(--shadow); transition: transform 0.3s, box-shadow 0.3s; }
+.price-category:hover, .team-member:hover { transform:translateY(-5px); box-shadow:0 0 45px var(--accent-glow); }
+.gallery-grid img { width:100%; height:300px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,215,0,0.2); transition:0.3s; }
+.gallery-grid img:hover { transform:scale(1.05); border:2px solid var(--accent); box-shadow:0 0 35px var(--accent-glow); }
+.team-member img { width:150px; height:150px; border-radius:50%; border:4px solid var(--accent); object-fit:cover; box-shadow:0 0 20px var(--accent-glow); transition:0.3s; }
+.team-member img:hover { transform:scale(1.1); box-shadow:0 0 45px var(--accent-glow); }
+.fade-in { opacity:0; transform:translateY(30px); transition:all 0.8s ease-in-out; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+footer { background: var(--bg-dark); color:#888; text-align:center; padding:25px 0; border-top:1px solid rgba(255,255,255,0.1); }
+@media(max-width:768px){ .container{width:95%; } .price-grid, .gallery-grid, .team-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1 class="logo"><a href="/"><img src="https://i.du.eu/d/9070/f7yoh7mn.png" alt="Logo"></a></h1>
+<nav id="nav">
+<ul>
+<li><a href="#preise">Preise</a></li>
+<li><a href="#galerie">Galerie</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#kontakt">Kontakt</a></li>
+<li><a href="tel:062072472" class="cta-button">📞 Anrufen</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<section id="hero">
+<div class="hero-overlay"></div>
+<div class="hero-content fade-in">
+<h2>💈 Friseursalon Burkhard</h2>
+<p>Exklusive Haarschnitte, Colorationen & Styling in elegantem Ambiente.</p>
+<a href="tel:062072472" class="cta-primary">📞 Jetzt Termin vereinbaren</a>
+</div>
+</section>
+<section id="preise" class="section-padding fade-in">
+<div class="container">
+<h3>PREISE & LEISTUNGEN</h3>
+<div class="price-grid">
+<div class="price-category">
+<h4>✂️ Damen & Styling</h4>
+<ul>
+<li>Waschen - Schneiden - Föhnen – ab 28€</li>
+<li>Waschen - Föhnen – ab 15€</li>
+<li>Farbe – ab 55€</li>
+<li>Strähnen - Folien – ab 70€</li>
+<li>Strähnen - Haube – ab 55€</li>
+<li>Dauerwelle komplett – ab 60€</li>
+<li>Hochsteckfrisur – ab 40€</li>
+<li>Make-up – ab 30€</li>
+<li>Haarkur – ab 5€</li>
+</ul>
+</div>
+<div class="price-category">
+<h4>💈 Herren</h4>
+<ul>
+<li>Waschen - Schneiden - Föhnen – ab 20€</li>
+<li>Bart Schneiden/Rasur – ab 5€</li>
+<li>Bart Färben – ab 10€</li>
+<li>Dauerwelle – ab 8€</li>
+<li>Face Waxing – ab 8€</li>
+</ul>
+</div>
+<div class="price-category">
+<h4>🕌 Nach Orientalischer Art</h4>
+<ul>
+<li>Augenbrauen-Zupfen – ab 5€</li>
+<li>Augenbrauen-Färben – ab 5€</li>
+<li>Wimpern-Färben – ab 5€</li>
+</ul>
+</div>
+<div class="price-category">
+<h4>👶 Kinder</h4>
+<ul>
+<li>Haarschnitt – ab 15-20€</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="galerie" class="section-padding fade-in">
+<div class="container">
+<h3>UNSERE STYLES</h3>
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1588776814546-8c8f745a3d43?auto=format&fit=crop&w=400&q=80" alt="Style 1">
+<img src="https://images.unsplash.com/photo-1590080877827-603c1b3a7a92?auto=format&fit=crop&w=400&q=80" alt="Style 2">
+<img src="https://images.unsplash.com/photo-1626200636395-1b0e062b0d5a?auto=format&fit=crop&w=400&q=80" alt="Style 3">
+<img src="https://images.unsplash.com/photo-1588776820000-8e2f0b3a7b44?auto=format&fit=crop&w=400&q=80" alt="Style 4">
+<img src="https://images.unsplash.com/photo-1612831455543-2a7f6d2e7bcd?auto=format&fit=crop&w=400&q=80" alt="Style 5">
+</div>
+</div>
+</section>
+<section id="team" class="section-padding fade-in">
+<div class="container">
+<h3>DEIN TEAM</h3>
+<div class="team-grid">
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1590080877827-603c1b3a7a92?auto=format&fit=crop&w=150&q=80" alt="Teammitglied 1">
+<h4>[Inhaber/in]</h4>
+<p>Master Stylist</p>
+</div>
+<div class="team-member">
+<img src="https://images.unsplash.com/photo-1603415526960-f31d7e81691b?auto=format&fit=crop&w=150&q=80" alt="Teammitglied 2">
+<h4>[Stylist/in]</h4>
+<p>Color & Wedding Specialist</p>
+</div>
+</div>
+</div>
+</section>
+<section id="kontakt" class="section-padding fade-in">
+<div class="container contact-grid">
+<div class="contact-info">
+<h3>Kontakt & Öffnungszeiten</h3>
+<p>📍 Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
+<p>📞 <a href=
