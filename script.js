@@ -1,16 +1,15 @@
+// js/script.js
 document.addEventListener('DOMContentLoaded', function(){
-  // Mobile nav toggle
+  // Mobile nav
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
-  if(navToggle){
-    navToggle.addEventListener('click', function(){
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', String(!expanded));
-      mainNav.style.display = expanded ? 'none' : 'block';
-    });
-  }
+  navToggle && navToggle.addEventListener('click', function(){
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
+    mainNav.style.display = expanded ? 'none' : 'block';
+  });
 
-  // Cookie banner logic (simple)
+  // Cookie Banner (Speicherung in Cookie)
   const cookieBanner = document.getElementById('cookieBanner');
   const acceptBtn = document.getElementById('acceptCookies');
   const rejectBtn = document.getElementById('rejectCookies');
@@ -21,23 +20,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
   if(cookieBanner && !hasConsent()){
     cookieBanner.hidden = false;
+  } else if(cookieBanner){
+    cookieBanner.hidden = true;
   }
 
   acceptBtn && acceptBtn.addEventListener('click', function(){
     setConsent('accepted');
     cookieBanner.hidden = true;
-    // hier ggf. Dritt‑Skripte laden (Analytics, Pixel) — nur nach Zustimmung
+    // Hier: Dritt-Skripte laden (Analytics) — nur nach Zustimmung
   });
   rejectBtn && rejectBtn.addEventListener('click', function(){
     setConsent('rejected');
     cookieBanner.hidden = true;
   });
 
-  // Formular feedback + basic validation (client-side)
+  // Formular-Feedback (disable Button bei Submit)
   const form = document.getElementById('contactForm');
   if(form){
     form.addEventListener('submit', function(e){
-      // einfache Pflichtprüfung
+      // Grundprüfung
       const name = form.querySelector('#name');
       const message = form.querySelector('#message');
       const consent = form.querySelector('#consent');
