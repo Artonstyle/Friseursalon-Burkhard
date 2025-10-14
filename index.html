@@ -3,26 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Friseursalon Burkhard – Dein Friseur in Wald‑Michelbach</title>
-  <meta name="description" content="Friseursalon Burkhard | Schnitt, Farbe & Styling in Wald‑Michelbach. Jetzt online Termin anfragen.">
+  <title>✂️ Friseursalon Burkhard – Dein Friseur in Wald‑Michelbach</title>
+  <meta name="description" content="Friseursalon Burkhard in Wald‑Michelbach – Schnitte, Farbe & Styling. Jetzt Termin vereinbaren.">
   <link rel="icon" href="images/favicon.ico">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Open Graph -->
   <meta property="og:title" content="Friseursalon Burkhard – Dein Friseur in Wald‑Michelbach">
   <meta property="og:description" content="Schnitt, Farbe und Styling mit Herz – Besuche uns in Wald‑Michelbach.">
-  <meta property="og:image" content="https://www.friseur-burkhard.de/images/og-image.jpg">
+  <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:type" content="website">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- JSON-LD LocalBusiness -->
+  <!-- JSON-LD (LocalBusiness) - ERSETZE domain/telefon falls nötig -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"HairSalon",
     "name":"Friseursalon Burkhard",
-    "image":"https://www.friseur-burkhard.de/images/salon_innen.jpg",
-    "telephone":"+4962072472",
+    "image":"https://DOMAIN/images/salon_innen.jpg",
+    "telephone":"+49 6207 2472",
     "address":{
       "@type":"PostalAddress",
       "streetAddress":"Bürgermeister‑Stein‑Straße 49",
@@ -30,7 +28,7 @@
       "postalCode":"69483",
       "addressCountry":"DE"
     },
-    "url":"https://www.friseur-burkhard.de",
+    "url":"https://DOMAIN",
     "openingHours":["Tu 09:00-18:00","We 09:00-18:00","Th 09:00-18:00","Fr 09:00-18:00","Sa 08:00-13:00"]
   }
   </script>
@@ -40,18 +38,18 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a class="logo" href="/" aria-label="Friseursalon Burkhard">✂️ Friseursalon Burkhard</a>
+      <a class="logo" href="/">✂️ Friseursalon Burkhard</a>
 
       <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Menü öffnen">☰</button>
 
       <nav id="mainNav" class="main-nav" role="navigation" aria-label="Hauptnavigation">
         <ul>
           <li><a href="#leistungen">Leistungen</a></li>
-          <li><a href="/preise">Preise</a></li>
+          <li><a href="https://DOMAIN/preise" target="_blank" rel="noopener">Preise</a></li>
           <li><a href="#galerie">Galerie</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
-          <li><a class="phone" href="tel:+4962072472">06207 2472</a></li>
+          <li><a class="cta" href="tel:+4962072472">06207 2472</a></li>
         </ul>
       </nav>
     </div>
@@ -62,30 +60,28 @@
     <section id="hero" class="hero" aria-label="Hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <h1>Willkommen in deinem Lieblingssalon</h1>
+          <h1>Willkommen in deinem neuen Lieblingssalon</h1>
           <p class="lead">Kompetente Beratung, moderne Schnitte und herzliche Atmosphäre — direkt in Wald‑Michelbach.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="tel:+4962072472">Jetzt anrufen</a>
-            <a class="btn btn-ghost" href="#kontakt">Termin anfragen</a>
-            <a class="btn btn-secondary" href="https://calendly.com/YOUR-CALENDLY" target="_blank" rel="noopener">Online buchen</a>
+            <a class="btn btn-primary" href="tel:+4962072472">Jetzt Termin vereinbaren</a>
+            <a class="btn btn-ghost" href="#leistungen">Mehr erfahren</a>
           </div>
         </div>
 
         <div class="hero-image" aria-hidden="true">
           <picture>
             <source srcset="images/hero-1200.webp 1200w, images/hero-800.webp 800w" type="image/webp">
-            <img src="images/hero-800.jpg" alt="Salon Innenansicht mit Stühlen und Spiegeln" loading="lazy">
+            <img src="images/hero.jpg" alt="Salon Innenansicht" loading="lazy">
           </picture>
         </div>
       </div>
     </section>
 
-    <!-- Leistungen -->
+    <!-- LEISTUNGEN -->
     <section id="leistungen" class="section">
       <div class="container">
         <h2>Unsere Leistungen</h2>
         <p class="lead">Schnitt, Farbe, Styling & Spezialbehandlungen — individuell auf dich abgestimmt.</p>
-
         <div class="service-grid" role="list">
           <article class="service" role="listitem">
             <h3>Damen & Herren</h3>
@@ -103,30 +99,30 @@
       </div>
     </section>
 
-    <!-- Galerie -->
-    <section id="galerie" class="section section--light" aria-label="Galerie">
+    <!-- GALERIE -->
+    <section id="galerie" class="section section--light">
       <div class="container">
         <h2>Galerie</h2>
-        <div class="gallery-grid">
-          <picture><source srcset="images/frisur_1-800.webp" type="image/webp"><img src="images/frisur_1-800.jpg" alt="Beispielhaarschnitt 1" loading="lazy"></picture>
-          <picture><source srcset="images/frisur_2-800.webp" type="image/webp"><img src="images/frisur_2-800.jpg" alt="Beispielhaarschnitt 2" loading="lazy"></picture>
-          <picture><source srcset="images/salon_innen-800.webp" type="image/webp"><img src="images/salon_innen-800.jpg" alt="Salon innen" loading="lazy"></picture>
+        <div class="gallery-grid" aria-live="polite">
+          <picture><source srcset="images/frisur_1-800.webp" type="image/webp"><img src="images/frisur_1.jpg" alt="Beispielhaarschnitt 1" loading="lazy"></picture>
+          <picture><source srcset="images/frisur_2-800.webp" type="image/webp"><img src="images/frisur_2.jpg" alt="Beispielhaarschnitt 2" loading="lazy"></picture>
+          <picture><source srcset="images/salon_innen-800.webp" type="image/webp"><img src="images/salon_innen.jpg" alt="Salon innen" loading="lazy"></picture>
         </div>
       </div>
     </section>
 
-    <!-- Team -->
-    <section id="team" class="section" aria-label="Team">
+    <!-- TEAM -->
+    <section id="team" class="section">
       <div class="container">
         <h2>Das Team</h2>
         <div class="team-grid">
           <div class="team-member">
-            <img src="images/team_chef-400.jpg" alt="Peter Burkhard" loading="lazy">
+            <img src="images/team_chef.jpg" alt="Peter Burkhard" loading="lazy">
             <h3>Peter Burkhard</h3>
             <p>Master‑Stylist & Farb‑Experte</p>
           </div>
           <div class="team-member">
-            <img src="images/team_stylist-400.jpg" alt="Anna Müller" loading="lazy">
+            <img src="images/team_stylist.jpg" alt="Anna Müller" loading="lazy">
             <h3>Anna Müller</h3>
             <p>Stylistin & Braut‑Expertin</p>
           </div>
@@ -134,8 +130,8 @@
       </div>
     </section>
 
-    <!-- Kontakt -->
-    <section id="kontakt" class="section section--dark" aria-label="Kontakt">
+    <!-- KONTAKT -->
+    <section id="kontakt" class="section section--dark">
       <div class="container contact-grid">
         <div class="contact-card">
           <h2>Kontakt & Öffnungszeiten</h2>
@@ -157,8 +153,7 @@
 
         <div class="contact-form" aria-live="polite">
           <h2>Termin anfragen</h2>
-
-          <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+          <form id="contactForm" action="https://formspree.io/f/FORM_ID" method="POST" novalidate>
             <label for="name">Name <span aria-hidden="true">*</span></label>
             <input id="name" name="name" type="text" required>
 
@@ -171,10 +166,9 @@
             <label for="message">Wunsch / Datum / Zeit <span aria-hidden="true">*</span></label>
             <textarea id="message" name="message" rows="4" required></textarea>
 
-            <!-- Einwilligung (DSGVO) -->
             <div class="consent">
               <input id="consent" name="consent" type="checkbox" required>
-              <label for="consent">Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Daten zur Terminvereinbarung verarbeitet werden.</label>
+              <label for="consent">Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin damit einverstanden.</label>
             </div>
 
             <!-- Honeypot -->
@@ -186,7 +180,7 @@
         </div>
 
         <div class="map-wrapper" aria-hidden="false">
-          <!-- Ersetze ...YOUR_MAP_EMBED... durch dein Embed oder nutze statischen Link aus Datenschutzgründen -->
+          <!-- ERSETZE YOUR_MAP_EMBED durch deinen Google Maps Embed (oder statische Karte) -->
           <iframe title="Karte Friseursalon Burkhard" src="https://www.google.com/maps/embed?pb=!1m18!...YOUR_MAP_EMBED..." loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
@@ -200,7 +194,7 @@
     </div>
   </footer>
 
-  <!-- Cookie Banner -->
+  <!-- Cookie-Banner -->
   <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie Hinweis" hidden>
     <div class="container">
       <p>Wir verwenden Cookies, um die Website bestmöglich bereitzustellen. <a href="/datenschutz.html">Mehr dazu</a></p>
