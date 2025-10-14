@@ -1,232 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💈 Friseursalon Burkhard – Willkommen</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --accent: #FFD700;
-  --accent-glow: rgba(255, 215, 0, 0.7);
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --dark-bg: radial-gradient(circle at 20% 20%, #0a0a0a, #000 90%);
-  --text-light: #ffffff;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>💈 Friseursalon Burkhard – Black Edition</title>
+<style type="text/css">
+body { font-family:'Times New Roman'; font-size:12pt; background-color:#000; color:#fff; margin:0; }
+p { margin:0pt; }
+.container { width:90%; margin:auto; padding:20px; }
+h2 { text-align:center; color:#fff; margin-bottom:40px; text-shadow:0 0 15px rgba(255,255,255,0.8); }
+.pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+.category { background: rgba(255,255,255,0.05); padding:20px; border-radius:15px; backdrop-filter: blur(10px); box-shadow: 0 0 30px rgba(255,255,255,0.3); transition: all 0.3s ease-in-out; }
+.category:hover { box-shadow: 0 0 50px rgba(255,255,255,0.9); transform: translateY(-5px); }
+.category h3 { color:#fff; margin-bottom:15px; text-shadow:0 0 10px rgba(255,255,255,0.6); }
+.category ul { list-style:none; padding:0; }
+.category li { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
+.header-banner { width:100%; max-height:300px; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; }
+.header-banner img { width:100%; height:auto; object-fit:cover; filter:brightness(1.2) contrast(1.1); animation: glowRotate 10s infinite linear alternate; }
+@keyframes glowRotate {
+  0% { filter: brightness(1.2) drop-shadow(0 0 10px #fff); transform: rotate(0deg) scale(1); }
+  50% { filter: brightness(1.5) drop-shadow(0 0 25px #fff); transform: rotate(1deg) scale(1.03); }
+  100% { filter: brightness(1.2) drop-shadow(0 0 10px #fff); transform: rotate(-1deg) scale(1); }
 }
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: var(--dark-bg);
-  color: var(--text-light);
-  overflow-x: hidden;
-}
-
-/* Bannerbereich oben */
-.header-banner {
-  width: 100%;
-  max-height: 200px;
-  overflow: hidden;
-  background-color: #000;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.header-banner .banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 35px rgba(0,0,0,0.8);
-}
-header .container {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-}
-.logo img {
-  height: 70px;
-  filter: drop-shadow(0 0 15px var(--accent-glow));
-}
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-nav a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-nav a:hover {
-  color: var(--accent);
-  text-shadow: 0 0 12px var(--accent-glow);
-}
-
-.hero {
-  height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: url('https://www.directupload.net/images/9070/f7yoh7mn.png') no-repeat center/contain;
-  background-color: #000;
-  position: relative;
-  text-align: center;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-}
-.hero h1, .hero p {
-  position: relative;
-  z-index: 2;
-  color: white;
-  text-shadow: 0 0 25px rgba(0,0,0,0.9);
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  color: var(--accent);
-}
-.hero p {
-  font-size: 1.3rem;
-  margin-top: 15px;
-  max-width: 700px;
-}
-
-.section-padding {
-  padding: 100px 0;
-}
-
-h3 {
-  text-align: center;
-  color: var(--accent);
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  text-shadow: 0 0 20px var(--accent-glow);
-  margin-bottom: 50px;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  width: 90%;
-  margin: auto;
-}
-.gallery-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  overflow: hidden;
-}
-.gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 50px var(--accent-glow);
-}
-.gallery-item img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-}
-.gallery-item h4 {
-  color: var(--accent);
-  margin: 15px;
-}
-.gallery-item p {
-  margin: 0 15px 20px;
-  color: #ddd;
-}
-
-footer {
-  background: #000;
-  color: #ccc;
-  text-align: center;
-  padding: 25px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
+.banner-line { width:100%; height:3px; background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%); box-shadow:0 0 25px rgba(255,255,255,0.7); margin:0 auto 40px auto; border-radius:50%; }
 </style>
 </head>
 <body>
 
-<!-- Neuer Bannerbereich -->
 <div class="header-banner">
-  <img src="https://www.directupload.net/images/9070/f7yoh7mn.png" alt="Friseur Burkhard Wald-Michelbach Logo Banner" class="banner-image">
+  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/Friseursalon%20Logo.png" alt="Friseursalon Burkhard Banner">
+</div>
+<div class="banner-line"></div>
+
+<div class="container">
+  <h2>💇‍♂️ Preisliste</h2>
+  <div class="pricing">
+    <div class="category">
+      <h3>Herren</h3>
+      <ul>
+        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 20€</span></li>
+        <li><span>Bart Schneiden / Rasur</span><span>ab 5€</span></li>
+        <li><span>Bart Färben</span><span>ab 10€</span></li>
+        <li><span>Dauerwelle</span><span>ab 8€</span></li>
+        <li><span>Face Waxing</span><span>ab 8€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Damen & Styling</h3>
+      <ul>
+        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 28€</span></li>
+        <li><span>Waschen - Föhnen</span><span>ab 15€</span></li>
+        <li><span>Farbe</span><span>ab 55€</span></li>
+        <li><span>Strähnen - Folien</span><span>ab 70€</span></li>
+        <li><span>Strähnen - Haube</span><span>ab 55€</span></li>
+        <li><span>Dauerwelle komplett</span><span>ab 60€</span></li>
+        <li><span>Hochsteckfrisur</span><span>ab 40€</span></li>
+        <li><span>Make-up</span><span>ab 30€</span></li>
+        <li><span>Haarkur</span><span>ab 5€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Orientalische Art</h3>
+      <ul>
+        <li><span>Augenbrauen Zupfen</span><span>ab 5€</span></li>
+        <li><span>Augenbrauen Färben</span><span>ab 5€</span></li>
+        <li><span>Wimpern Färben</span><span>ab 5€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Kinder</h3>
+      <ul>
+        <li><span>Haarschnitt</span><span>ab 15-20€</span></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<header>
-  <div class="container">
-    <h1 class="logo"><img src="https://www.directupload.net/images/9070/f7yoh7mn.png" alt="Friseursalon Burkhard Logo"></h1>
-    <nav>
-      <ul>
-        <li><a href="#galerie">Frisuren</a></li>
-        <li><a href="#preise">Preise</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <h1>Willkommen bei Friseursalon Burkhard</h1>
-  <p>Stil. Präzision. Leidenschaft – Erlebe Friseurkunst auf höchstem Niveau.</p>
-</section>
-
-<section id="galerie" class="section-padding">
-  <h3>💇‍♂️ Frisuren & Styles</h3>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80" alt="Damen Kurzhaar">
-      <h4>Damen Kurzhaar</h4>
-      <p>Moderne, elegante Schnitte mit klaren Linien und Volumen.</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1620331311521-0a8e22e0d6f7?auto=format&fit=crop&w=900&q=80" alt="Balayage">
-      <h4>Balayage & Farbe</h4>
-      <p>Sanfte Farbverläufe mit natürlicher Tiefe – für strahlende Ergebnisse.</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1616394584738-cc13e8d39b35?auto=format&fit=crop&w=900&q=80" alt="Herren Fade Cut">
-      <h4>Herren Fade Cut</h4>
-      <p>Präzise Übergänge mit klaren Konturen – klassisch und modern zugleich.</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1600180758890-6e8e7a4d5c73?auto=format&fit=crop&w=900&q=80" alt="Langhaar Styling">
-      <h4>Langhaar Styling</h4>
-      <p>Natürlich fallende Frisuren mit Bewegung und Glanz.</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1621605815971-35a29fede2d3?auto=format&fit=crop&w=900&q=80" alt="Bartpflege">
-      <h4>Bartpflege</h4>
-      <p>Pflege, Kontur und Stil – der perfekte Look für jeden Gentleman.</p>
-    </div>
-  </div>
-</section>
+<div class="container">
+  <h2>📍 Kontakt</h2>
+  <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
+  <p>📞 06207 2472</p>
+  <p>📧 friseur-burkhard@t-online.de</p>
+  <p><strong>Di–Fr:</strong> 09:00–18:00 Uhr | <strong>Sa:</strong> 08:00–13:00 Uhr | <strong>Mo:</strong> Ruhetag</p>
+</div>
 
 <footer>
-  <p>&copy; 2025 BURKHARD.HAIR | Dein Style. Dein Moment.</p>
+  &copy; 2025 BURKHARD.HAIR | Black Edition & Precision
 </footer>
+
 </body>
 </html>
