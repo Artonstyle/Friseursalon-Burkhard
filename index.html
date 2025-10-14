@@ -1,88 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<title>💈 Friseursalon Burkhard – Black Edition</title>
-<style type="text/css">
-body { font-family:'Times New Roman'; font-size:12pt; background-color:#000; color:#fff; margin:0; }
-p { margin:0pt; }
-.container { width:90%; margin:auto; padding:20px; }
-h2 { text-align:center; color:#fff; margin-bottom:40px; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-.pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-.category { background: rgba(255,255,255,0.05); padding:20px; border-radius:15px; backdrop-filter: blur(10px); box-shadow: 0 0 30px rgba(255,255,255,0.3); transition: all 0.3s ease-in-out; }
-.category:hover { box-shadow: 0 0 50px rgba(255,255,255,0.9); transform: translateY(-5px); }
-.category h3 { color:#fff; margin-bottom:15px; text-shadow:0 0 10px rgba(255,255,255,0.6); }
-.category ul { list-style:none; padding:0; }
-.category li { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
-footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
-.header-banner { width:100%; max-height:300px; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; }
-.header-banner img { width:100%; height:auto; object-fit:cover; filter:brightness(1.2) contrast(1.1); }
-.banner-line { width:100%; height:3px; background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%); box-shadow:0 0 25px rgba(255,255,255,0.7); margin:0 auto 40px auto; border-radius:50%; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Friseursalon Burkhard – Dein Friseur in Wald‑Michelbach</title>
+  <meta name="description" content="Friseursalon Burkhard | Schnitt, Farbe & Styling in Wald‑Michelbach. Jetzt online Termin anfragen.">
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Friseursalon Burkhard – Dein Friseur in Wald‑Michelbach">
+  <meta property="og:description" content="Schnitt, Farbe und Styling mit Herz – Besuche uns in Wald‑Michelbach.">
+  <meta property="og:image" content="https://www.friseur-burkhard.de/images/og-image.jpg">
+  <meta property="og:type" content="website">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"HairSalon",
+    "name":"Friseursalon Burkhard",
+    "image":"https://www.friseur-burkhard.de/images/salon_innen.jpg",
+    "telephone":"+4962072472",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Bürgermeister‑Stein‑Straße 49",
+      "addressLocality":"Wald‑Michelbach",
+      "postalCode":"69483",
+      "addressCountry":"DE"
+    },
+    "url":"https://www.friseur-burkhard.de",
+    "openingHours":["Tu 09:00-18:00","We 09:00-18:00","Th 09:00-18:00","Fr 09:00-18:00","Sa 08:00-13:00"]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="header-banner">
-  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/Friseursalon%20Logo.png" alt="Friseursalon Burkhard Banner">
-</div>
-<div class="banner-line"></div>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="Friseursalon Burkhard">✂️ Friseursalon Burkhard</a>
 
-<div class="container">
-  <h2>💇‍♂️ Preisliste</h2>
-  <div class="pricing">
-    <div class="category">
-      <h3>Herren</h3>
-      <ul>
-        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 20€</span></li>
-        <li><span>Bart Schneiden / Rasur</span><span>ab 5€</span></li>
-        <li><span>Bart Färben</span><span>ab 10€</span></li>
-        <li><span>Dauerwelle</span><span>ab 8€</span></li>
-        <li><span>Face Waxing</span><span>ab 8€</span></li>
-      </ul>
+      <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Menü öffnen">☰</button>
+
+      <nav id="mainNav" class="main-nav" role="navigation" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="/preise">Preise</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a class="phone" href="tel:+4962072472">06207 2472</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="category">
-      <h3>Damen & Styling</h3>
-      <ul>
-        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 28€</span></li>
-        <li><span>Waschen - Föhnen</span><span>ab 15€</span></li>
-        <li><span>Farbe</span><span>ab 55€</span></li>
-        <li><span>Strähnen - Folien</span><span>ab 70€</span></li>
-        <li><span>Strähnen - Haube</span><span>ab 55€</span></li>
-        <li><span>Dauerwelle komplett</span><span>ab 60€</span></li>
-        <li><span>Hochsteckfrisur</span><span>ab 40€</span></li>
-        <li><span>Make-up</span><span>ab 30€</span></li>
-        <li><span>Haarkur</span><span>ab 5€</span></li>
-      </ul>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Willkommen in deinem Lieblingssalon</h1>
+          <p class="lead">Kompetente Beratung, moderne Schnitte und herzliche Atmosphäre — direkt in Wald‑Michelbach.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="tel:+4962072472">Jetzt anrufen</a>
+            <a class="btn btn-ghost" href="#kontakt">Termin anfragen</a>
+            <a class="btn btn-secondary" href="https://calendly.com/YOUR-CALENDLY" target="_blank" rel="noopener">Online buchen</a>
+          </div>
+        </div>
+
+        <div class="hero-image" aria-hidden="true">
+          <picture>
+            <source srcset="images/hero-1200.webp 1200w, images/hero-800.webp 800w" type="image/webp">
+            <img src="images/hero-800.jpg" alt="Salon Innenansicht mit Stühlen und Spiegeln" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="section">
+      <div class="container">
+        <h2>Unsere Leistungen</h2>
+        <p class="lead">Schnitt, Farbe, Styling & Spezialbehandlungen — individuell auf dich abgestimmt.</p>
+
+        <div class="service-grid" role="list">
+          <article class="service" role="listitem">
+            <h3>Damen & Herren</h3>
+            <p>Typgerechte Schnitte, Styling und professionelle Beratung.</p>
+          </article>
+          <article class="service" role="listitem">
+            <h3>Farb‑Expertise</h3>
+            <p>Balayage, Strähnen und schonende Farbtechniken.</p>
+          </article>
+          <article class="service" role="listitem">
+            <h3>Specials</h3>
+            <p>Brautstyling, Make‑Up und VIP‑Behandlungen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="section section--light" aria-label="Galerie">
+      <div class="container">
+        <h2>Galerie</h2>
+        <div class="gallery-grid">
+          <picture><source srcset="images/frisur_1-800.webp" type="image/webp"><img src="images/frisur_1-800.jpg" alt="Beispielhaarschnitt 1" loading="lazy"></picture>
+          <picture><source srcset="images/frisur_2-800.webp" type="image/webp"><img src="images/frisur_2-800.jpg" alt="Beispielhaarschnitt 2" loading="lazy"></picture>
+          <picture><source srcset="images/salon_innen-800.webp" type="image/webp"><img src="images/salon_innen-800.jpg" alt="Salon innen" loading="lazy"></picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section" aria-label="Team">
+      <div class="container">
+        <h2>Das Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="images/team_chef-400.jpg" alt="Peter Burkhard" loading="lazy">
+            <h3>Peter Burkhard</h3>
+            <p>Master‑Stylist & Farb‑Experte</p>
+          </div>
+          <div class="team-member">
+            <img src="images/team_stylist-400.jpg" alt="Anna Müller" loading="lazy">
+            <h3>Anna Müller</h3>
+            <p>Stylistin & Braut‑Expertin</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="section section--dark" aria-label="Kontakt">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h2>Kontakt & Öffnungszeiten</h2>
+          <address>
+            <p>📍 Bürgermeister‑Stein‑Straße 49<br>69483 Wald‑Michelbach</p>
+            <p>📞 <a href="tel:+4962072472">06207 2472</a></p>
+            <p>📧 <a href="mailto:friseur-burkhard@t-online.de">friseur-burkhard@t-online.de</a></p>
+          </address>
+
+          <h3>Öffnungszeiten</h3>
+          <ul>
+            <li>Dienstag–Freitag: 09:00–18:00</li>
+            <li>Samstag: 08:00–13:00</li>
+            <li>Montag: Ruhetag</li>
+          </ul>
+
+          <p><a class="btn btn-primary" href="https://www.google.com/maps/dir//Bürgermeister-Stein-Straße+49,+69483+Wald-Michelbach" target="_blank" rel="noopener">Route planen</a></p>
+        </div>
+
+        <div class="contact-form" aria-live="polite">
+          <h2>Termin anfragen</h2>
+
+          <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel">
+
+            <label for="email">E‑Mail</label>
+            <input id="email" name="_replyto" type="email">
+
+            <label for="message">Wunsch / Datum / Zeit <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <!-- Einwilligung (DSGVO) -->
+            <div class="consent">
+              <input id="consent" name="consent" type="checkbox" required>
+              <label for="consent">Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Daten zur Terminvereinbarung verarbeitet werden.</label>
+            </div>
+
+            <!-- Honeypot -->
+            <input type="text" name="_gotcha" style="display:none" aria-hidden="true">
+
+            <button type="submit" class="btn btn-primary">Anfrage senden</button>
+            <p class="form-note">Wir melden uns schnellstmöglich zurück.</p>
+          </form>
+        </div>
+
+        <div class="map-wrapper" aria-hidden="false">
+          <!-- Ersetze ...YOUR_MAP_EMBED... durch dein Embed oder nutze statischen Link aus Datenschutzgründen -->
+          <iframe title="Karte Friseursalon Burkhard" src="https://www.google.com/maps/embed?pb=!1m18!...YOUR_MAP_EMBED..." loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>© Friseursalon Burkhard — <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+      <p><a href="https://www.google.com/maps/place/Bürgermeister-Stein-Straße+49,+69483+Wald-Michelbach" target="_blank" rel="noopener">Route & Öffnungszeiten</a></p>
     </div>
-    <div class="category">
-      <h3>Orientalische Art</h3>
-      <ul>
-        <li><span>Augenbrauen Zupfen</span><span>ab 5€</span></li>
-        <li><span>Augenbrauen Färben</span><span>ab 5€</span></li>
-        <li><span>Wimpern Färben</span><span>ab 5€</span></li>
-      </ul>
-    </div>
-    <div class="category">
-      <h3>Kinder</h3>
-      <ul>
-        <li><span>Haarschnitt</span><span>ab 15-20€</span></li>
-      </ul>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie Hinweis" hidden>
+    <div class="container">
+      <p>Wir verwenden Cookies, um die Website bestmöglich bereitzustellen. <a href="/datenschutz.html">Mehr dazu</a></p>
+      <div class="cookie-actions">
+        <button id="acceptCookies" class="btn btn-primary">Akzeptieren</button>
+        <button id="rejectCookies" class="btn btn-ghost">Ablehnen</button>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <h2>📍 Kontakt</h2>
-  <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
-  <p>📞 06207 2472</p>
-  <p>📧 friseur-burkhard@t-online.de</p>
-  <p><strong>Di–Fr:</strong> 09:00–18:00 Uhr | <strong>Sa:</strong> 08:00–13:00 Uhr | <strong>Mo:</strong> Ruhetag</p>
-</div>
-
-<footer>
-  &copy; 2025 BURKHARD.HAIR | Black Edition & Precision
-</footer>
-
+  <script src="js/script.js" defer></script>
 </body>
 </html>
