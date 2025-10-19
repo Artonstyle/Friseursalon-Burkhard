@@ -21,11 +21,17 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
 .header-banner img:hover { transform:scale(1.05); }
 .banner-line { width:100%; height:2px; background:black; box-shadow:0 0 10px rgba(255,255,255,0.3); margin:20px auto 40px auto; border-radius:50%; }
 .welcome-section { text-align:center; padding:30px 20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(8px); margin:0 auto 40px auto; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
-.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); }
-.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
+.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); animation: glow 2.5s ease-in-out infinite alternate; }
+@keyframes glow { from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff9900, 0 0 40px #ff6600; } to { text-shadow: 0 0 20px #fff, 0 0 30px #ffcc00, 0 0 50px #ffaa00, 0 0 60px #ff8800; } }
+.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; animation: fadeIn 3s ease forwards; opacity:0; }
+@keyframes fadeIn { to { opacity:1; } }
 .gift-section { text-align:center; margin:60px auto; background:rgba(255,255,255,0.05); padding:40px 20px; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
 .gift-section h2 { color:#ffd700; text-shadow:0 0 15px rgba(255,215,0,0.8); margin-bottom:20px; }
 .gift-section img { width:100%; max-width:700px; border-radius:10px; box-shadow:0 0 25px rgba(255,215,0,0.4); }
+.opening-hours { margin-top:20px; text-align:center; }
+.opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
+.opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+.opening-hours li strong { color:#ffd700; }
 footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
 </style>
 </head>
@@ -87,17 +93,31 @@ footer { text-align:center; padding:15px 0; background:#050505; color:#888; marg
 
 <!-- Gutschein Sektion -->
 <div class="gift-section">
-  <h2>🎁 Geschenkgutscheine erhältlich!</h2>
-  <p>Verschenken Sie Schönheit und Wohlbefinden – mit einem Friseurgutschein von Friseur Burkhard. Das ideale Geschenk für Freunde, Familie oder Kollegen!</p>
+  <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
+  <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
+  <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
+  <p><strong>So einfach geht’s:</strong></p>
+  <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd;">
+    <li>• Wunschbetrag festlegen.</li>
+    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
+    <li>• Freude und Verwöhnmomente verschenken!</li>
+  </ul>
+  <p>Machen Sie Ihren Liebsten eine Freude, die von Herzen kommt. Kommen Sie vorbei oder kontaktieren Sie uns – wir freuen uns auf Sie!</p>
   <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
 </div>
 
-<div class="container">
+<div class="container opening-hours">
   <h2>📍 Kontakt</h2>
   <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
   <p>📞 06207 2472</p>
   <p>📧 friseur-burkhard@t-online.de</p>
-  <p><strong>Di–Fr:</strong> 09:00–18:00 Uhr | <strong>Sa:</strong> 08:00–13:00 Uhr | <strong>Mo:</strong> Ruhetag</p>
+  <h3>Öffnungszeiten</h3>
+  <ul>
+    <li><strong>Montag:</strong> Geschlossen ⛔</li>
+    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
+    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
+    <li><strong>Sonntag:</strong> Geschlossen ⛔</li>
+  </ul>
 </div>
 
 <footer>
