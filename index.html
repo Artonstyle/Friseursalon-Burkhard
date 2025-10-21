@@ -17,20 +17,17 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
 .category ul { list-style:none; padding:0; }
 .category li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
 .header-banner { width:100%; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; background:#000; }
-.header-banner img { width:100%; height:auto; object-fit:contain; filter:brightness(1.2) contrast(1.1); transition:transform 0.5s ease; border:none; }
-.header-banner img:hover { transform:scale(1.05); }
+.header-banner img { width:100%; height:auto; object-fit:contain; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; filter:brightness(1.2) contrast(1.1); border:none; }
 
-/* Für Handy: Logo größer, keine weißen Linien */
+/* Für Handy */
 @media (max-width:768px) {
   .header-banner { background:#000; box-shadow:none; border:none; }
-  .header-banner img { width:150%; max-height:none; object-fit:cover; filter:brightness(1.3); }
+  .header-banner img { width:150%; max-height:none; object-fit:cover; filter:brightness(1.3) contrast(1.2); image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; }
 }
 
 .welcome-section { text-align:center; padding:30px 20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(8px); margin:0 auto 40px auto; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
-.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); animation: glow 2.5s ease-in-out infinite alternate; }
-@keyframes glow { from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff9900, 0 0 40px #ff6600; } to { text-shadow: 0 0 20px #fff, 0 0 30px #ffcc00, 0 0 50px #ffaa00, 0 0 60px #ff8800; } }
-.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; animation: fadeIn 3s ease forwards; opacity:0; }
-@keyframes fadeIn { to { opacity:1; } }
+.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); }
+.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
 .gift-section { text-align:center; margin:60px auto; background:rgba(255,255,255,0.05); padding:40px 20px; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
 .gift-section h2 { color:#ffd700; text-shadow:0 0 15px rgba(255,215,0,0.8); margin-bottom:20px; }
 .gift-section img { width:100%; max-width:700px; border-radius:10px; box-shadow:0 0 25px rgba(255,215,0,0.4); height:auto; }
@@ -39,6 +36,8 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
 .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
 .opening-hours li strong { color:#ffd700; }
 footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
+footer a { color:#ffd700; text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -118,7 +117,7 @@ footer { text-align:center; padding:15px 0; background:#050505; color:#888; marg
   <p>📧 friseur-burkhard@t-online.de</p>
   <h3>Öffnungszeiten</h3>
   <ul>
-    <li><strong>Montag:</strong> <br>Geschlossen ⛔</li>
+    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
     <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
     <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
     <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
@@ -126,10 +125,10 @@ footer { text-align:center; padding:15px 0; background:#050505; color:#888; marg
 </div>
 
 <footer>
-  &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision
+  &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision<br>
+  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/datenschutz.html">Datenschutzerklärung</a> |
+  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/impressum.html">Impressum</a>
 </footer>
 
 </body>
 </html>
-
-
