@@ -52,7 +52,6 @@ footer a:hover { text-decoration:underline; }
 .guestbook-section button{width:100%;padding:12px;border:none;border-radius:8px;background:#ffd700;color:#000;font-weight:700;cursor:pointer;}
 .guestbook-section button:hover{background:#ffeb3b;}
 #successMsg{text-align:center;color:#0f0;display:none;margin-top:10px;}
-/* Detailliertere Darstellung der Einträge */
 #guestEntries div{background:rgba(255,255,255,0.05);border-left:4px solid #ffd700;padding:10px 15px;border-radius:8px;margin-bottom:15px;}
 #guestEntries strong { color: #fff; }
 #guestEntries p { color: #ccc; margin-top: 5px; font-style: italic; }
@@ -114,20 +113,6 @@ footer a:hover { text-decoration:underline; }
   </div>
 </div>
 
-<div class="container guestbook-section">
-  <h2>⭐ Ihr Feedback</h2>
-  <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
-  <form id="guestbookForm">
-    <label for="guestName">Ihr Name:</label>
-    <input type="text" id="guestName" required>
-    <label for="guestText">Ihr Beitrag:</label>
-    <textarea id="guestText" required></textarea>
-    <button type="submit">Beitrag absenden</button>
-  </form>
-  <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
-  <div id="guestEntries"></div>
-</div>
-
 <div class="gift-section">
   <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
   <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
@@ -140,6 +125,20 @@ footer a:hover { text-decoration:underline; }
   </ul>
   <p>Machen Sie Ihren Liebsten eine Freude, die von Herzen kommt. Kommen Sie vorbei oder kontaktieren Sie uns – wir freuen uns auf Sie!</p>
   <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
+</div>
+
+<div class="container guestbook-section">
+  <h2>⭐ Ihr Feedback</h2>
+  <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
+  <form id="guestbookForm">
+    <label for="guestName">Ihr Name:</label>
+    <input type="text" id="guestName" required>
+    <label for="guestText">Ihr Beitrag:</label>
+    <textarea id="guestText" required></textarea>
+    <button type="submit">Beitrag absenden</button>
+  </form>
+  <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
+  <div id="guestEntries"></div>
 </div>
 
 <div class="container opening-hours">
