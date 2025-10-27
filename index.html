@@ -6,6 +6,9 @@
 <title>💈 Friseursalon Burkhard – Black Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+/* ------------------------------------------------------------------ */
+/* BESTEHENDES STYLING */
+/* ------------------------------------------------------------------ */
 body { font-family:'Poppins', sans-serif; background-color:#000; color:#fff; margin:0; padding:0; }
 p { margin:0; }
 .container { width:90%; max-width:1200px; margin:0 auto; padding:20px; }
@@ -18,13 +21,6 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
 .category li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
 .header-banner { width:100%; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; background:#000; }
 .header-banner img { width:100%; height:auto; object-fit:contain; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; filter:brightness(1.2) contrast(1.1); border:none; }
-
-/* Für Handy */
-@media (max-width:768px) {
-  .header-banner { background:#000; box-shadow:none; border:none; }
-  .header-banner img { width:150%; max-height:none; object-fit:cover; filter:brightness(1.3) contrast(1.2); image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; }
-}
-
 .welcome-section { text-align:center; padding:30px 20px; background:rgba(255,255,255,0.05); backdrop-filter:blur(8px); margin:0 auto 40px auto; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
 .welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); }
 .welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
@@ -42,102 +38,208 @@ footer a:hover { text-decoration:underline; }
 .social-links a { display:inline-block; margin:0 8px; }
 .social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
+/* Für Handy */
+@media (max-width:768px) {
+  .header-banner { background:#000; box-shadow:none; border:none; }
+  .header-banner img { width:150%; max-height:none; object-fit:cover; filter:brightness(1.3) contrast(1.2); image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; }
+}
+
+/* ------------------------------------------------------------------ */
+/* NEUES STYLING FÜR GÄSTEBUCH */
+/* ------------------------------------------------------------------ */
+.guestbook-section{padding:40px 20px;margin:40px auto;background:rgba(255,255,255,0.05);border-radius:15px;max-width:700px;box-shadow:0 0 25px rgba(255,255,255,0.2);}
+.guestbook-section input,.guestbook-section textarea{width:100%;padding:10px;margin-bottom:15px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(0,0,0,0.5);color:#fff;}
+.guestbook-section button{width:100%;padding:12px;border:none;border-radius:8px;background:#ffd700;color:#000;font-weight:700;cursor:pointer;}
+.guestbook-section button:hover{background:#ffeb3b;}
+#successMsg{text-align:center;color:#0f0;display:none;margin-top:10px;}
+/* Detailliertere Darstellung der Einträge */
+#guestEntries div{background:rgba(255,255,255,0.05);border-left:4px solid #ffd700;padding:10px 15px;border-radius:8px;margin-bottom:15px;}
+#guestEntries strong { color: #fff; }
+#guestEntries p { color: #ccc; margin-top: 5px; font-style: italic; }
+#guestEntries span { color: #888; font-size: 0.9em; }
 </style>
 </head>
 <body>
 
 <div class="header-banner">
-  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/logo2.png" alt="Friseursalon Burkhard Banner">
+  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/logo2.png" alt="Friseursalon Burkhard Banner">
 </div>
 
 <div class="welcome-section">
-  <h1>Willkommen bei Friseursalon Burkhard</h1>
-  <p>Schön, dass Sie hier sind! Seit vielen Jahren steht unser Salon für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haargefühl. Treten Sie ein, lehnen Sie sich zurück und genießen Sie die Kunst des Friseurhandwerks.</p>
+  <h1>Willkommen bei Friseursalon Burkhard</h1>
+  <p>Schön, dass Sie hier sind! Seit vielen Jahren steht unser Salon für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haargefühl. Treten Sie ein, lehnen Sie sich zurück und genießen Sie die Kunst des Friseurhandwerks.</p>
 </div>
 
 <div class="container">
-  <h2>💇‍♂️ Preisliste</h2>
-  <div class="pricing">
-    <div class="category">
-      <h3>Damen & Styling</h3>
-      <ul>
-        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 28€</span></li>
-        <li><span>Waschen - Föhnen</span><span>ab 15€</span></li>
-        <li><span>Farbe</span><span>ab 55€</span></li>
-        <li><span>Strähnen - Folien</span><span>ab 70€</span></li>
-        <li><span>Strähnen - Haube</span><span>ab 55€</span></li>
-        <li><span>Dauerwelle komplett</span><span>ab 60€</span></li>
-        <li><span>Hochsteckfrisur</span><span>ab 40€</span></li>
-        <li><span>Make-up</span><span>ab 30€</span></li>
-        <li><span>Haarkur</span><span>ab 5€</span></li>
-      </ul>
-    </div>
-    <div class="category">
-      <h3>Herren</h3>
-      <ul>
-        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 20€</span></li>
-        <li><span>Bart Schneiden / Rasur</span><span>ab 5€</span></li>
-        <li><span>Bart Färben</span><span>ab 10€</span></li>
-        <li><span>Dauerwelle</span><span>ab 8€</span></li>
-        <li><span>Face Waxing</span><span>ab 8€</span></li>
-      </ul>
-    </div>
-    <div class="category">
-      <h3>Orientalische Art</h3>
-      <ul>
-        <li><span>Augenbrauen Zupfen</span><span>ab 5€</span></li>
-        <li><span>Augenbrauen Färben</span><span>ab 5€</span></li>
-        <li><span>Wimpern Färben</span><span>ab 5€</span></li>
-      </ul>
-    </div>
-    <div class="category">
-      <h3>Kinder</h3>
-      <ul>
-        <li><span>Haarschnitt</span><span>ab 15-20€</span></li>
-      </ul>
-    </div>
-  </div>
+  <h2>💇‍♂️ Preisliste</h2>
+  <div class="pricing">
+    <div class="category">
+      <h3>Damen & Styling</h3>
+      <ul>
+        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 28€</span></li>
+        <li><span>Waschen - Föhnen</span><span>ab 15€</span></li>
+        <li><span>Farbe</span><span>ab 55€</span></li>
+          <li><span>Strähnen - Folien</span><span>ab 70€</span></li>
+        <li><span>Strähnen - Haube</span><span>ab 55€</span></li>
+        <li><span>Dauerwelle komplett</span><span>ab 60€</span></li>
+        <li><span>Hochsteckfrisur</span><span>ab 40€</span></li>
+        <li><span>Make-up</span><span>ab 30€</span></li>
+        <li><span>Haarkur</span><span>ab 5€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Herren</h3>
+      <ul>
+        <li><span>Waschen - Schneiden - Föhnen</span><span>ab 20€</span></li>
+        <li><span>Bart Schneiden / Rasur</span><span>ab 5€</span></li>
+        <li><span>Bart Färben</span><span>ab 10€</span></li>
+        <li><span>Dauerwelle</span><span>ab 8€</span></li>
+        <li><span>Face Waxing</span><span>ab 8€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Orientalische Art</h3>
+      <ul>
+        <li><span>Augenbrauen Zupfen</span><span>ab 5€</span></li>
+        <li><span>Augenbrauen Färben</span><span>ab 5€</span></li>
+        <li><span>Wimpern Färben</span><span>ab 5€</span></li>
+      </ul>
+    </div>
+    <div class="category">
+      <h3>Kinder</h3>
+      <ul>
+        <li><span>Haarschnitt</span><span>ab 15-20€</span></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<!-- Gutschein Sektion -->
+<div class="container guestbook-section">
+  <h2>⭐ Ihr Feedback</h2>
+  <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
+  <form id="guestbookForm">
+    <label for="guestName">Ihr Name:</label>
+    <input type="text" id="guestName" required>
+    <label for="guestText">Ihr Beitrag:</label>
+    <textarea id="guestText" required></textarea>
+    <button type="submit">Beitrag absenden</button>
+  </form>
+  <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
+  <div id="guestEntries"></div>
+</div>
+
 <div class="gift-section">
-  <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
-  <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
-  <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
-  <p><strong>So einfach geht’s:</strong></p>
-  <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd;">
-    <li>• Wunschbetrag festlegen.</li>
-    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
-    <li>• Freude und Verwöhnmomente verschenken!</li>
-  </ul>
-  <p>Machen Sie Ihren Liebsten eine Freude, die von Herzen kommt. Kommen Sie vorbei oder kontaktieren Sie uns – wir freuen uns auf Sie!</p>
-  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
+  <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
+  <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
+  <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
+  <p><strong>So einfach geht’s:</strong></p>
+  <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd;">
+    <li>• Wunschbetrag festlegen.</li>
+    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
+    <li>• Freude und Verwöhnmomente verschenken!</li>
+  </ul>
+  <p>Machen Sie Ihren Liebsten eine Freude, die von Herzen kommt. Kommen Sie vorbei oder kontaktieren Sie uns – wir freuen uns auf Sie!</p>
+  <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
 </div>
 
 <div class="container opening-hours">
-  <h2>📍 Kontakt</h2>
-  <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
-  <p>📞 06207 2472</p>
-  <p>📧 friseur-burkhard@t-online.de</p>
-  <div class="social-links">
-    <a href="https://www.instagram.com/friseurburkhard2024/?hl=de" target="_blank" aria-label="Instagram">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
-    </a>
-  </div>
-  <h3>Öffnungszeiten</h3>
-  <ul>
-    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
-    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
-    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
-    <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
-  </ul>
+  <h2>📍 Kontakt</h2>
+  <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
+  <p>📞 06207 2472</p>
+  <p>📧 friseur-burkhard@t-online.de</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/friseurburkhard2024/?hl=de" target="_blank" aria-label="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+    </a>
+  </div>
+  <h3>Öffnungszeiten</h3>
+  <ul>
+    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
+    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
+    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
+    <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
+  </ul>
 </div>
 
 <footer>
-  &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision<br>
-  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/datenschutz.html">Datenschutzerklärung</a> |
-  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/impressum.html">Impressum</a>
+  &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision<br>
+  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/datenschutz.html">Datenschutzerklärung</a> |
+  <a href="https://artonstyle.github.io/Friseursalon-Burkhard/impressum.html">Impressum</a>
 </footer>
+
+<script>
+// 🛑 WICHTIG: ERSETZEN SIE DIESEN PLATZHALTER DURCH IHRE NEUE URL
+// Sie benötigen eine NEUE Apps Script URL für diese Website.
+const sheetURL = "DEINE_NEUE_WEB_APP_URL_HIER"; 
+
+const form=document.getElementById("guestbookForm");
+const guestEntriesDiv=document.getElementById("guestEntries");
+const successMsg=document.getElementById("successMsg");
+
+// --- Einträge laden (GET) ---
+async function loadEntries(){
+  try{
+    const res=await fetch(sheetURL);
+    
+    if (!res.ok) throw new Error(`HTTP-Fehler! Status: ${res.status}`);
+    
+    const entries=await res.json();
+    if(!entries||!entries.length){
+      guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>';
+      return;
+    }
+    guestEntriesDiv.innerHTML=entries.reverse().map(e=>{
+      const d=new Date(e.date);
+      const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      return `<div>
+        <strong style="color:#fff;">${e.name||'Anonym'}</strong>
+        <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
+        <p style="color:#ccc;margin-top:5px;font-style: italic;">"${e.text}"</p>
+      </div>`;
+    }).join('');
+  }catch(err){
+    console.error("Fehler beim Laden der Einträge:", err);
+    guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>';
+  }
+}
+
+// --- Formular absenden (POST) ---
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  
+  const name=document.getElementById("guestName").value.trim();
+  const text=document.getElementById("guestText").value.trim();
+  if(!name||!text)return;
+  
+  const payload = { name, text }; 
+  
+  try{
+    // Korrekte JSON-Methode, die der korrigierte Apps Script Code erwartet
+    await fetch(sheetURL,{
+      method:"POST",
+      mode: "no-cors", 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload) 
+    });
+    
+    form.reset();
+    successMsg.style.display="block";
+    
+    setTimeout(()=>{
+      successMsg.style.display="none";
+      loadEntries();
+    }, 3000);
+    
+  }catch(err){
+    console.error("Fehler beim Senden:", err);
+    alert("Fehler beim Senden!");
+  }
+});
+
+document.addEventListener("DOMContentLoaded",loadEntries);
+</script>
 
 </body>
 </html>
