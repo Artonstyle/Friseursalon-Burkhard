@@ -3,188 +3,834 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friseursalon Burkhard</title>
-
-    <!-- Tailwind -->
+    <title>💈 Friseursalon Burkhard – Black Edition</title>
+    <!-- Tailwind CSS CDN (Beibehalten für dynamische Elemente/Grid-Layouts) -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
-
+    <!-- Font Awesome für Icons (Sterne und Navigation) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- Benutzerdefinierte Variablen (Angepasst an Black Edition) --- */
+        :root {
+            --dark-bg: #000; /* Reines Schwarz */
+            --card: rgba(255, 255, 255, 0.05); /* Transparente Karte */
+            --text-light: #fff;
+            --muted: #aaa;
+            --gold: #ffd700; /* Vom Nutzer bereitgestelltes Gold */
+            --gold-light: #ffeb80; 
+            --gold-shadow: rgba(255, 215, 0, 0.5);
+            --transition-speed: 0.5s;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
-        .header-title {
-            font-family: 'Playfair Display', serif;
+        /* --- Layout & Dynamic Sections --- */
+        .content-wrapper {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto; /* Oben/Unten 0, da der Banner/Footer den Raum füllt */
+            padding: 0 10px 40px 10px; 
+            flex-grow: 1;
+            position: relative; 
         }
 
-        /* Galerie */
-        .gallery {
+        /* Standard-Sektionen (wird für Startseite und Galerie verwendet) */
+        .content-section {
+            padding: 20px 0; /* Padding nur für den inneren Inhalt, da die Startseite selbst volle Breite nutzt */
+            transition: opacity var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .content-section.show {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative; 
+        }
+        
+        /* Die Galerie-Sektion beim Laden unsichtbar machen, wenn sie nicht 'show' ist */
+        #haarschnitt-section:not(.show) {
+            display: none;
+        }
+
+        /* --- Navigation --- */
+        #navbar {
+            background-color: #050505; /* Sehr dunkler Hintergrund */
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+        }
+
+        .nav-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--gold-shadow);
+        }
+
+        /* Styling für den Startseite-Button (Gold-Akzent) */
+        #btnStartseite {
+            background-color: #333;
+            color: var(--text-light);
+            border: 2px solid var(--muted);
+        }
+
+        /* Spezielles Styling für den Haarschnitte-Button (GOLD) */
+        #btnHaarschnitt {
+            background: linear-gradient(180deg, var(--gold-light), var(--gold)); 
+            border: 2px solid var(--gold-light); 
+            color: #000; /* Dunkle Schrift auf Gold */
+            box-shadow: 0 4px 15px var(--gold-shadow);
+        }
+
+        /* --- Gästebuch Formular & Style-Anpassung an Black Edition --- */
+        
+        .guestbook-card {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .guestbook-card:hover {
+             box-shadow:0 0 40px rgba(255,255,255,0.9);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 0.5rem;
+            border: 1px solid var(--muted);
+            background-color: rgba(0,0,0,0.5); /* Dunkler als der Hintergrund */
+            color: var(--text-light);
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+
+        .submit-btn {
+            background: var(--gold);
+            color: var(--dark-bg);
+            padding: 12px 25px;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .submit-btn:disabled {
+            background-color: var(--muted);
+            cursor: not-allowed;
+            color: #111;
+        }
+
+        /* --- Star Rating --- */
+        .star-rating {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* --- Gästebuch Einträge --- */
+        #messagesGrid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-top: 30px;
+        }
+
+        .message-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 10px rgba(255,215,0,0.1);
+            border-left: 5px solid var(--gold);
+        }
+
+        .card-header {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .card-info {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .card-stars {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        /* --- Galerie Styling --- */
+        #haarschnitt-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
-
-        .gallery img {
+        
+        #haarschnitt-gallery img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            height: auto; /* <-- Geändert: Automatische Höhe, um das Bild vollständig zu zeigen */
+            border-radius: 0.75rem;
+            /* object-fit: cover; und aspect-ratio: 1 / 1; wurden entfernt, um das Bild nicht zu beschneiden */
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+        
+        #haarschnitt-gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 25px var(--gold-shadow);
         }
 
-        .gallery img:hover {
-            transform: scale(1.05);
+        #haarschnitt-loader {
+            text-align: center;
+            padding: 40px;
+            color: var(--gold-light);
+            font-weight: 600;
+            display: none;
         }
+        
+        /* Meldungsbereiche */
+        .message-box {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: none;
+        }
+        
+        #successMsg {
+            background-color: #10b98120;
+            color: #10b981;
+        }
+        
+        #errorMsg {
+            background-color: #ef444420; 
+            color: #ef4444;
+        }
+        
+        /* --- Benutzerdefinierte Burkhard-Styles (Vom Nutzer übernommen) --- */
+        p { margin:0; }
+        .burkhard-container { width:90%; max-width:1200px; margin:0 auto; padding:20px 0; }
+        h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
+        .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+        .category { background: var(--card); padding:25px; border-radius:15px; backdrop-filter: blur(10px); box-shadow:0 0 20px rgba(255,255,255,0.3); transition:all 0.3s ease-in-out; }
+        .category:hover { box-shadow:0 0 40px var(--gold-shadow); transform:translateY(-5px); }
+        .category h3 { text-align:center; margin-bottom:15px; font-weight:600; color: var(--gold); }
+        .category ul { list-style:none; padding:0; }
+        .category li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .header-banner { width:100%; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; background:#000; }
+        .header-banner img { width:100%; height:auto; object-fit:contain; filter:brightness(1.2) contrast(1.1); border:none; }
+        
+        @media (max-width:768px) {
+            .header-banner { background:#000; box-shadow:none; border:none; }
+            .header-banner img { width:150%; max-height:none; object-fit:cover; filter:brightness(1.3) contrast(1.2); }
+        }
+        
+        .welcome-section { text-align:center; padding:30px 20px; background:var(--card); backdrop-filter:blur(8px); margin:40px auto; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
+        .welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); }
+        .welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
+        .gift-section { text-align:center; margin:60px auto; background:var(--card); padding:40px 20px; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
+        .gift-section h2 { color:var(--gold); text-shadow:0 0 15px rgba(255,215,0,0.8); margin-bottom:20px; }
+        .gift-section img { width:100%; max-width:700px; border-radius:10px; box-shadow:0 0 25px var(--gold-shadow); height:auto; }
+        .opening-hours { margin-top:20px; text-align:center; }
+        .opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
+        .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .opening-hours li strong { color:var(--gold); }
+        
+        footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
+        footer a { color:var(--gold); text-decoration:none; margin:0 10px; }
+        footer a:hover { text-decoration:underline; }
+        .social-links { margin-top:15px; }
+        .social-links a { display:inline-block; margin:0 8px; }
+        .social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
+        .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
+        
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-    <!-- HEADER -->
-    <header class="bg-black text-white p-6 text-center shadow-lg">
-        <h1 class="header-title text-4xl font-bold">Friseursalon Burkhard</h1>
-        <p class="mt-2 text-lg">Ihr professioneller Haarstylist in Bielefeld</p>
-    </header>
-
-    <!-- NAVIGATION -->
-    <nav class="bg-gray-900 text-white p-4 text-center">
-        <a href="#start" class="mx-4 hover:text-yellow-400">Start</a>
-        <a href="#haarschnitte" class="mx-4 hover:text-yellow-400">Haarschnitte</a>
-        <a href="#gästebuch" class="mx-4 hover:text-yellow-400">Gästebuch</a>
+    <!-- Navigationsleiste -->
+    <nav id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center h-16">
+                <div class="flex space-x-4">
+                    <button id="btnStartseite" class="nav-button">
+                        <i class="fas fa-home mr-2"></i> Startseite
+                    </button>
+                    <button id="btnHaarschnitt" class="nav-button">
+                        <i class="fas fa-cut mr-2"></i> Galerie
+                    </button>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <!-- START -->
-    <section id="start" class="p-8 text-center">
-        <h2 class="text-3xl font-bold header-title">Willkommen</h2>
-        <p class="mt-4 text-lg">
-            Schön, dass Sie uns besuchen!  
-            Hier finden Sie unsere Haarschnitte und echte Bewertungen unserer Kunden.
-        </p>
-    </section>
+    <!-- Hauptinhalts-Wrapper -->
+    <main class="content-wrapper">
 
-    <!-- HAARSCHNITTE -->
-    <section id="haarschnitte" class="p-8 bg-white shadow-inner">
-        <h2 class="text-3xl font-bold header-title text-center">Unsere Haarschnitte</h2>
+        <!-- Sektion 1: Startseite & Gästebuch (Standardmäßig sichtbar) -->
+        <section id="siteContent" class="content-section show">
+            
+            <!-- START: Inhalt des Friseursalons Burkhard (Vom Nutzer bereitgestellt) -->
+            <div class="header-banner">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/logo2.png" alt="Friseursalon Burkhard Banner">
+            </div>
 
-        <div id="haarschnitt-galerie" class="gallery"></div>
-    </section>
+            <div class="welcome-section">
+                <h1>Willkommen bei Friseursalon Burkhard</h1>
+                <p>Schön, dass Sie hier sind! Seit vielen Jahren steht unser Salon für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haargefühl. Treten Sie ein, lehnen Sie sich zurück und genießen Sie die Kunst des Friseurhandwerks.</p>
+            </div>
 
-    <!-- GÄSTEBUCH -->
-    <section id="gästebuch" class="p-8 bg-gray-200">
-        <h2 class="text-3xl font-bold header-title text-center">Gästebuch</h2>
 
-        <form id="gaestebuchForm" class="max-w-xl mx-auto mt-6 bg-white p-6 rounded-lg shadow">
-            <label class="block">Name:</label>
-            <input id="name" class="w-full p-2 border rounded mt-1">
+            <div class="burkhard-container">
 
-            <label class="block mt-4">Nachricht:</label>
-            <textarea id="nachricht" class="w-full p-2 border rounded mt-1"></textarea>
+                <h2>💇‍♂️ Preisliste</h2>
 
-            <label class="block mt-4">Bewertung (1–5):</label>
-            <input id="bewertung" type="number" min="1" max="5" class="w-full p-2 border rounded mt-1">
+                <div class="pricing">
+                    <div class="category">
+                        <h3>Damen & Styling</h3>
+                        <ul>
+                            <li><span>Waschen - Schneiden - Föhnen</span><span>ab 28€</span></li>
+                            <li><span>Waschen - Föhnen</span><span>ab 15€</span></li>
+                            <li><span>Farbe</span><span>ab 55€</span></li>
+                            <li><span>Strähnen - Folien</span><span>ab 70€</span></li>
+                            <li><span>Strähnen - Haube</span><span>ab 55€</span></li>
+                            <li><span>Dauerwelle komplett</span><span>ab 60€</span></li>
+                            <li><span>Hochsteckfrisur</span><span>ab 40€</span></li>
+                            <li><span>Make-up</span><span>ab 30€</span></li>
+                            <li><span>Haarkur</span><span>ab 5€</span></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>Herren</h3>
+                        <ul>
+                            <li><span>Waschen - Schneiden - Föhnen</span><span>ab 20€</span></li>
+                            <li><span>Bart Schneiden / Rasur</span><span>ab 5€</span></li>
+                            <li><span>Bart Färben</span><span>ab 10€</span></li>
+                            <li><span>Dauerwelle</span><span>ab 8€</span></li>
+                            <li><span>Face Waxing</span><span>ab 8€</span></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>Orientalische Art</h3>
+                        <ul>
+                            <li><span>Augenbrauen Zupfen</span><span>ab 5€</span></li>
+                            <li><span>Augenbrauen Färben</span><span>ab 5€</span></li>
+                            <li><span>Wimpern Färben</span><span>ab 5€</span></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <h3>Kinder</h3>
+                        <ul>
+                            <li><span>Haarschnitt</span><span>ab 15-20€</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-            <button type="submit" class="mt-4 w-full bg-black text-white p-2 rounded hover:bg-gray-800">
-                Eintrag speichern
-            </button>
-        </form>
 
-        <div id="gaestebuchEintraege" class="mt-8 max-w-2xl mx-auto"></div>
-    </section>
+            <!-- Gutschein Sektion -->
+            <div class="gift-section">
+                <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
+                <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
+                <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
+                <p><strong>So einfach geht’s:</strong></p>
+                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px; margin-bottom: 20px;">
+                    <li>• Wunschbetrag festlegen.</li>
+                    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
+                    <li>• Freude und Verwöhnmomente verschenken!</li>
+                </ul>
+                <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
+            </div>
 
-    <!-- FIREBASE -->
+            <div class="burkhard-container opening-hours">
+                <h2>📍 Kontakt</h2>
+                <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
+                <p>📞 06207 2472</p>
+                <p>📧 friseur-burkhard@t-online.de</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/friseurburkhard2024/?hl=de" target="_blank" aria-label="Instagram">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    </a>
+                </div>
+
+                <h3>Öffnungszeiten</h3>
+                <ul>
+                    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
+                    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
+                    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
+                    <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
+                </ul>
+            </div>
+            
+            <!-- ENDE: Inhalt des Friseursalons Burkhard -->
+
+
+            <!-- START: Dynamic Guestbook Section (Stil angepasst) -->
+            <div class="burkhard-container mt-12 pt-6 border-t border-gray-700">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">Gästebuch & Bewertungen</h2>
+            </div>
+
+            <!-- Formular zum Senden -->
+            <form id="guestbookForm" class="max-w-xl mx-auto mb-10 guestbook-card">
+                <h3 class="text-2xl font-semibold mb-4 text-center" style="color: var(--gold);">Ihre Bewertung abgeben</h3>
+                
+                <!-- Nachrichtenbereich (Erfolg/Fehler) -->
+                <div id="successMsg" class="message-box" style="display:none;"></div>
+                <div id="errorMsg" class="message-box" style="display:none;"></div>
+
+                <div class="mb-4">
+                    <label for="guestName" class="block text-sm font-medium mb-1 text-gray-300">Ihr Name:</label>
+                    <input type="text" id="guestName" name="name" class="form-input" placeholder="Max Mustermann" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="guestText" class="block text-sm font-medium mb-1 text-gray-300">Ihr Kommentar:</label>
+                    <textarea id="guestText" name="text" class="form-textarea" rows="4" placeholder="Teilen Sie uns Ihre Erfahrungen mit!" required></textarea>
+                </div>
+
+                <div class="mb-4 text-center">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Ihre Bewertung:</label>
+                    <div class="star-rating">
+                        <!-- Sternelemente mit data-rating Attributen -->
+                        <span data-rating="1"><i class="far fa-star"></i></span>
+                        <span data-rating="2"><i class="far fa-star"></i></span>
+                        <span data-rating="3"><i class="far fa-star"></i></span>
+                        <span data-rating="4"><i class="far fa-star"></i></span>
+                        <span data-rating="5"><i class="far fa-star"></i></span>
+                    </div>
+                    <!-- Verstecktes Feld für die Bewertung -->
+                    <input type="hidden" id="hiddenRating" name="rating" value="0">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
+                </div>
+            </form>
+
+            <!-- Anzeigen der Einträge -->
+            <div id="messagesGrid" class="burkhard-container">
+                <!-- Einträge werden hier per JavaScript geladen -->
+                <p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Lade Einträge...</p>
+            </div>
+            
+            <p id="currentUserId" class="text-xs text-center mt-6 text-gray-500"></p>
+        </section>
+
+
+        <!-- Sektion 2: Haarschnitte Galerie (Standardmäßig versteckt) -->
+        <section id="haarschnitt-section" class="content-section">
+            <div class="burkhard-container">
+                <h1 class="text-4xl font-extrabold text-white mb-6 text-center">Unsere Meisterwerke</h1>
+                <p class="text-center text-gray-300 mb-8">Eine Auswahl der besten Schnitte, direkt aus unserem Salon.</p>
+
+                <div id="haarschnitt-loader" class="text-lg">
+                    <i class="fas fa-spinner fa-spin mr-2"></i> Lade Bilder von GitHub...
+                </div>
+
+                <div id="haarschnitt-gallery">
+                    <!-- Bilder werden hier per JavaScript von GitHub geladen -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer des Friseursalons Burkhard (Vom Nutzer bereitgestellt) -->
+    <footer>
+        &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision<br>
+        <a href="https://artonstyle.github.io/Friseursalon-Burkhard/datenschutz.html">Datenschutzerklärung</a> |
+        <a href="https://artonstyle.github.io/Friseursalon-Burkhard/impressum.html">Impressum</a>
+    </footer>
+
+    <!-- Firebase SDK Imports -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "DEIN_KEY",
-            authDomain: "DEIN_DOMAIN",
-            projectId: "DEIN_PROJECT",
-            storageBucket: "DEIN_BUCKET",
-            messagingSenderId: "DEIN_ID",
-            appId: "DEINE_APPID"
-        };
+        /* --- Globale Variablen & Firebase Konfiguration --- */
+        let db, auth, userId, appId;
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // Element-Referenzen
+        const messagesGrid = document.getElementById('messagesGrid');
+        const form = document.getElementById("guestbookForm");
+        const successMsg = document.getElementById('successMsg');
+        const errorMsg = document.getElementById('errorMsg');
+        const btnStartseite = document.getElementById('btnStartseite');
+        const btnHaarschnitt = document.getElementById('btnHaarschnitt');
+        const siteContent = document.getElementById('siteContent');
+        const haarschnittSection = document.getElementById('haarschnitt-section');
+        const gallery = document.getElementById('haarschnitt-gallery');
+        const loaderElm = document.getElementById('haarschnitt-loader');
+        const ratingInput = document.getElementById('hiddenRating');
+        
+        let imagesLoadedOnce = false;
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Gästebuch speichern
-        document.getElementById("gaestebuchForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const nachricht = document.getElementById("nachricht").value;
-            const bewertung = document.getElementById("bewertung").value;
-
-            await addDoc(collection(db, "gaestebuch"), {
-                name,
-                nachricht,
-                bewertung,
-                datum: new Date()
-            });
-
-            alert("Danke für Ihren Eintrag!");
-            location.reload();
-        });
-
-        // Gästebuch laden
-        async function ladeGaestebuch() {
-            const snap = await getDocs(collection(db, "gaestebuch"));
-            const container = document.getElementById("gaestebuchEintraege");
-
-            snap.forEach(doc => {
-                const d = doc.data();
-
-                const card = document.createElement("div");
-                card.className = "bg-white p-4 rounded shadow mt-4";
-
-                card.innerHTML = `
-                    <h3 class="font-bold">${d.name}</h3>
-                    <p class="text-gray-700">${d.nachricht}</p>
-                    <p class="text-yellow-600 font-bold mt-2">Bewertung: ${d.bewertung} ⭐</p>
-                `;
-
-                container.appendChild(card);
-            });
-        }
-        ladeGaestebuch();
-    </script>
-
-    <!-- AUTOMATISCH BILDER LADEN -->
-    <script>
-        async function loadHaarschnittImages() {
-            const url = "https://api.github.com/repos/Artonstyle/Friseursalon-Burkhard/contents/Haarschnitte";
-
+        /* --- Firebase Initialisierung und Authentifizierung --- */
+        async function initFirebase() {
             try {
-                const response = await fetch(url);
-                const files = await response.json();
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase config is missing.");
+                    return;
+                }
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                setLogLevel('debug');
+                appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                
+                // Anonyme oder Custom Token Authentifizierung
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                userId = auth.currentUser?.uid || crypto.randomUUID();
 
-                const gallery = document.getElementById("haarschnitt-galerie");
-                gallery.innerHTML = "";
-
-                files.forEach(file => {
-                    if (file.type === "file") {
-                        const imgUrl =
-                            `https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/Haarschnitte/${file.name}`;
-
-                        const img = document.createElement("img");
-                        img.src = imgUrl;
-                        img.alt = file.name;
-                        img.loading = "lazy";
-
-                        gallery.appendChild(img);
-                    }
-                });
+                // Zeigt die Benutzer-ID an (Wichtig für das Multi-User-Debugging)
+                document.getElementById('currentUserId').textContent = `Nutzer-ID: ${userId}`;
+                
+                // Starte das Laden der Einträge, nachdem die Auth abgeschlossen ist
+                loadEntries();
 
             } catch (error) {
-                console.error("Fehler beim Laden der Bilder:", error);
+                console.error("Firebase Initialisierung oder Authentifizierung fehlgeschlagen:", error);
+                showCustomMessage(`Fehler: Initialisierung fehlgeschlagen. ${error.message}`, 'error');
             }
         }
 
-        document.addEventListener("DOMContentLoaded", loadHaarschnittImages);
-    </script>
+        /* --- Firestore Gastbucheinträge --- */
+        
+        function getGuestbookCollectionRef() {
+            if (!db || !userId) return null;
+            // Öffentlicher Pfad: /artifacts/{appId}/public/data/guestbook
+            const collectionPath = `artifacts/${appId}/public/data/guestbook`;
+            return collection(db, collectionPath);
+        }
 
+        // Lädt Einträge in Echtzeit mit onSnapshot
+        function loadEntries() {
+            const colRef = getGuestbookCollectionRef();
+            if (!colRef) return;
+
+            // Ladezustand anzeigen
+            messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
+
+            // Echtzeit-Listener einrichten
+            onSnapshot(colRef, (snapshot) => {
+                try {
+                    const entries = [];
+                    snapshot.forEach(doc => {
+                        entries.push({ id: doc.id, ...doc.data() });
+                    });
+                    
+                    if (entries.length === 0) {
+                        messagesGrid.innerHTML = '<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>';
+                        return;
+                    }
+
+                    // Sortieren nach Datum (neueste zuerst)
+                    const sortedEntries = entries.sort((a, b) => {
+                        const dateA = new Date(a.date || 0).getTime();
+                        const dateB = new Date(b.date || 0).getTime();
+                        return dateB - dateA; 
+                    });
+
+                    const cardsHtml = sortedEntries.map(e => {
+                        const entryRating = e.rating ? parseInt(e.rating) : 0;
+                        let starHtml = '';
+                        for (let i = 1; i <= 5; i++) {
+                            starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
+                        }
+
+                        let dateString;
+                        try {
+                            const d = new Date(e.date);
+                            dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                        } catch { dateString = 'Unbekanntes Datum'; }
+
+                        return `<div class="message-card">
+                                    <div class="card-header">${e.name || 'Anonym'}</div>
+                                    <div class="card-info">${dateString}</div>
+                                    <div class="card-stars">${starHtml}</div>
+                                    <p>${e.text}</p>
+                                </div>`;
+                    }).join('');
+
+                    messagesGrid.innerHTML = cardsHtml;
+
+                } catch (err) {
+                    console.error("Fehler beim Verarbeiten der Firestore-Einträge:", err);
+                    messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
+                }
+            }, (error) => {
+                console.error("Firestore Listener Fehler:", error);
+                messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1;">Fehler beim Abrufen der Einträge.</p>';
+            });
+        }
+
+
+        // Custom message display function (ersetzt alert())
+        function showCustomMessage(message, type) {
+            const msgEl = type === 'success' ? successMsg : errorMsg;
+            const otherMsgEl = type === 'success' ? errorMsg : successMsg;
+            
+            otherMsgEl.style.display = 'none'; // Andere Nachricht ausblenden
+            msgEl.textContent = message;
+            msgEl.style.display = 'block';
+            
+            if (type === 'success') {
+                // Erfolgsmeldungen nach 4 Sekunden ausblenden
+                setTimeout(() => { msgEl.style.display = 'none'; }, 4000);
+            }
+        }
+
+
+        /* --- Event Listener & Logik --- */
+
+        // Star rating logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const stars = document.querySelectorAll('.star-rating span');
+            let rating = 0;
+
+            function updateStars(r) {
+               stars.forEach(s => {
+                  const icon = s.querySelector('i');
+                  if (parseInt(s.dataset.rating) <= r) {
+                     icon.classList.remove('far'); 
+                     icon.classList.add('fas');
+                  } else {
+                     icon.classList.remove('fas'); 
+                     icon.classList.add('far');
+                  }
+               });
+            }
+            
+            stars.forEach(star => {
+               star.addEventListener('click', () => {
+                  rating = parseInt(star.dataset.rating);
+                  updateStars(rating);
+                  ratingInput.value = rating;
+               });
+               star.addEventListener('mouseover', () => {
+                  updateStars(parseInt(star.dataset.rating)); 
+               });
+               star.addEventListener('mouseout', () => {
+                  updateStars(rating);
+               });
+            });
+            
+            // Initialisiere Firebase und lade Einträge
+            initFirebase();
+        });
+
+
+        // Submit handler (POST to Firestore)
+        form.addEventListener("submit", async e => {
+            e.preventDefault();
+            const name = document.getElementById("guestName").value.trim();
+            const text = document.getElementById("guestText").value.trim();
+            const rating = ratingInput ? ratingInput.value : '0';
+
+            if (!name || !text || rating === '0') { 
+                showCustomMessage("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!", 'error'); 
+                return; 
+            }
+            
+            const colRef = getGuestbookCollectionRef();
+            if (!colRef) {
+                showCustomMessage("Datenbank ist nicht bereit. Bitte warten Sie kurz und versuchen Sie es erneut.", 'error');
+                return;
+            }
+
+
+            const btn = form.querySelector('.submit-btn');
+            btn.disabled = true; 
+            btn.textContent = 'Wird gesendet...';
+            errorMsg.style.display = 'none'; 
+
+            try{
+                const newEntry = {
+                    name: name,
+                    text: text,
+                    rating: parseInt(rating),
+                    date: new Date().toISOString(), 
+                    userId: userId
+                };
+
+                // Daten in Firestore hinzufügen
+                await addDoc(colRef, newEntry);
+                
+                // Erfolg & Formular-Reset
+                form.reset();
+                // Sterne zurücksetzen
+                document.querySelectorAll('.star-rating span i').forEach(icon => { icon.classList.remove('fas'); icon.classList.add('far'); });
+                if(ratingInput) ratingInput.value='0';
+                
+                showCustomMessage("Vielen Dank! Ihr Eintrag wurde erfolgreich gespeichert.", 'success');
+                
+                // Dank onSnapshot muss loadEntries() nicht manuell aufgerufen werden.
+                
+            }catch(err){
+                console.error("Fehler beim Senden des Eintrags:", err);
+                showCustomMessage("Fehler beim Senden des Eintrags! Bitte versuchen Sie es später erneut.", 'error');
+            } finally {
+                btn.disabled = false; 
+                btn.textContent = 'EINTRAG SENDEN';
+            }
+        });
+
+        /* ---------------------------
+            Gallery toggle & GitHub loader
+            --------------------------- */
+        
+        function showStartseite(){
+            // hide gallery (Fade-Out + Move Up)
+            haarschnittSection.classList.remove('show');
+            haarschnittSection.style.transform = 'translateY(20px)';
+            // Nach der Animation ausblenden
+            setTimeout(()=>{ haarschnittSection.style.display='none'; },500);
+            
+            // show site content (Fade-In + Move Down)
+            siteContent.style.display='block';
+            siteContent.style.position = 'absolute'; // Für den Übergang
+            setTimeout(()=>{ 
+                siteContent.classList.add('show'); 
+                siteContent.style.transform = 'translateY(0)';
+                siteContent.style.position = 'relative';
+            },50);
+        }
+
+        function showHaarschnitt(){
+            // hide site content (Fade-Out + Move Up)
+            siteContent.classList.remove('show');
+            siteContent.style.transform = 'translateY(20px)';
+            // Nach der Animation ausblenden
+            setTimeout(()=>{ siteContent.style.display='none'; },500);
+
+            // show gallery (Fade-In + Move Down)
+            haarschnittSection.style.display='block';
+            haarschnittSection.style.position = 'absolute'; // Für den Übergang
+            setTimeout(()=>{ 
+                haarschnittSection.classList.add('show'); 
+                haarschnittSection.style.transform = 'translateY(0)';
+                haarschnittSection.style.position = 'relative';
+            },50);
+
+            if(!imagesLoadedOnce) loadGithubImages();
+        }
+
+        btnStartseite.addEventListener('click', showStartseite);
+        btnHaarschnitt.addEventListener('click', showHaarschnitt);
+
+        /* Load images from GitHub repo folder (haarschnitte) using GitHub API */
+        async function loadGithubImages(){
+            loaderElm.style.display = 'block';
+            gallery.innerHTML = '';
+            try {
+                // API-URL für den Ordner-Inhalt (Hier wurde der Artonstyle-Link beibehalten, da kein neuer Repo-Link angegeben wurde)
+                const apiUrl = 'https://api.github.com/repos/Artonstyle/Barbershop/contents/haarschnitte';
+                
+                // Exponential Backoff für den Fetch-Aufruf
+                let response;
+                let delay = 1000;
+                const maxRetries = 3;
+
+                for (let i = 0; i < maxRetries; i++) {
+                    response = await fetch(apiUrl);
+                    if (response.ok) break;
+                    console.warn(`GitHub API Versuch ${i + 1} fehlgeschlagen. Warte ${delay / 1000}s...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+
+                if(!response || !response.ok) {
+                    throw new Error('GitHub API Fehler ' + (response ? response.status : 'Netzwerk'));
+                }
+                
+                const files = await response.json();
+                
+                const images = files.filter(f => f.type === 'file' && f.name.match(/\.(jpg|jpeg|png|webp)$/i));
+                
+                // Sortieren der Dateien (numerisch, falls vorhanden)
+                images.sort((a,b)=> a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:'base'}));
+
+                if(images.length === 0){
+                    loaderElm.textContent = 'Keine Bilder gefunden.';
+                    imagesLoadedOnce = true;
+                    return;
+                }
+                
+                images.forEach(f=>{
+                    const img = document.createElement('img');
+                    img.src = f.download_url; // Direkter Link zur Raw-Datei
+                    img.alt = f.name.replace(/\.[^/.]+$/, ""); // Dateiendung entfernen
+                    img.loading = 'lazy'; 
+                    gallery.appendChild(img);
+                });
+                imagesLoadedOnce = true;
+                loaderElm.style.display = 'none';
+                
+            } catch (err) {
+                console.error(err);
+                loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
+            }
+        }
+
+        // Sicherstellen, dass siteContent beim Laden mit Animation angezeigt wird
+        window.addEventListener('load', ()=>{
+            // Initialisiere die Ansicht: Startseite sichtbar, Galerie versteckt
+            siteContent.classList.add('show');
+            siteContent.style.transform = 'translateY(0)';
+            siteContent.style.position = 'relative';
+            haarschnittSection.style.display='none'; 
+            haarschnittSection.style.position = 'absolute';
+        });
+
+    </script>
 </body>
 </html>
