@@ -154,7 +154,12 @@
         p { margin:0; }
         .burkhard-container { width:90%; max-width:1200px; margin:0 auto; padding:20px 0; }
         h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-        .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+        /* ANPASSUNG: Hier wird das Grid auf 4 Spalten (min 230px) umgestellt, damit 4 Spalten auf großen Bildschirmen angezeigt werden */
+        .pricing { 
+            display:grid; 
+            grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); 
+            gap:25px; 
+        }
         .category { background: var(--card); padding:25px; border-radius:15px; backdrop-filter: blur(10px); box-shadow:0 0 20px rgba(255,255,255,0.3); transition:all 0.3s ease-in-out; }
         .category:hover { box-shadow:0 0 40px var(--gold-shadow); transform:translateY(-5px); }
         .category h3 { text-align:center; margin-bottom:15px; font-weight:600; color: var(--gold); }
@@ -171,7 +176,16 @@
         .welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
         .gift-section { text-align:center; margin:60px auto; background:var(--card); padding:40px 20px; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
         .gift-section h2 { color:var(--gold); text-shadow:0 0 15px rgba(255,215,0,0.8); margin-bottom:20px; }
-        .gift-section img { width:100%; max-width:700px; border-radius:10px; box-shadow:0 0 25px var(--gold-shadow); height:auto; }
+        /* ANPASSUNG Gutschein-Bild: Block-Element zentrieren */
+        .gift-section img { 
+            width:100%; 
+            max-width:700px; 
+            border-radius:10px; 
+            box-shadow:0 0 25px var(--gold-shadow); 
+            height:auto;
+            display: block; /* Wichtig: Definiert es als Block-Element */
+            margin: 20px auto 0 auto; /* Zentriert es horizontal und gibt etwas Abstand nach oben */
+        }
         .opening-hours { margin-top:20px; text-align:center; }
         .opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
         .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
@@ -238,7 +252,7 @@
                 <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
                 <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
                 <p><strong>So einfach geht’s:</strong></p>
-                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px; margin-bottom: 20px;">
+                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px;">
                     <li>• Wunschbetrag festlegen.</li>
                     <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
                     <li>• Freude und Verwöhnmomente verschenken!</li>
@@ -291,7 +305,6 @@
             </div>
 
             <div class="burkhard-container opening-hours">
-                <h2>Öffnungszeiten & 📍 Kontakt</h2>
                 
                 <h3>Öffnungszeiten</h3>
                 <ul>
@@ -302,7 +315,7 @@
                 </ul>
 
                 <h3 class="mt-8">Kontakt</h3>
-                <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
+                <p>Bürgermeister-Stein-Straße 49, <br>69483 Wald-Michelbach</p>
                 <p>📞 06207 2472</p>
                 <p>📧 friseur-burkhard@t-online.de</p>
                 <div class="social-links">
