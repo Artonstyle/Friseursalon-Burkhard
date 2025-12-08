@@ -20,7 +20,7 @@
             --gold-shadow: rgba(255, 215, 0, 0.5);
             --transition-speed: 0.5s;
 
-            /* WEIHNACHTS VARIABLEN (VON IHREM CODE ÜBERNOMMEN) */
+            /* WEIHNACHTS VARIABLEN */
             --xmas-red: #C52020;
             --xmas-gold: #FFD700;
             --xmas-white: #FFFFFF;
@@ -38,11 +38,10 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            /* Hintergrund-Beleuchtung für Body beibehalten */
             perspective: 1500px;
             background-image: radial-gradient(circle, #0a0a0a 5%, var(--xmas-dark) 90%);
         }
-        /* HINTERGRUND-BELEUCHTUNG für Body (VON IHREM CODE ÜBERNOMMEN) */
+        /* HINTERGRUND-BELEUCHTUNG für Body */
         body::before {
             content: '';
             position: absolute;
@@ -87,7 +86,6 @@
             position: relative; 
         }
         
-        /* Die Galerie-Sektion beim Laden unsichtbar machen, wenn sie nicht 'show' ist */
         #haarschnitt-section:not(.show) {
             display: none;
         }
@@ -239,10 +237,10 @@
         }
 
         /* ====================================
-           WEIHNACHTS-MITTEILUNG STYLES (AKTUALISIERT)
+           WEIHNACHTS-MITTEILUNG STYLES 
            ==================================== */
         
-        /* CSS-ANIMATIONEN & KEYFRAMES (AKTUALISIERT) */
+        /* CSS-ANIMATIONEN & KEYFRAMES */
         @keyframes border-run {
             from { border-image-source: conic-gradient(from 0deg, var(--xmas-gold), var(--xmas-red), var(--xmas-white), var(--xmas-gold)); }
             to { border-image-source: conic-gradient(from 360deg, var(--xmas-gold), var(--xmas-red), var(--xmas-white), var(--xmas-gold)); }
@@ -275,15 +273,15 @@
             50% { transform: rotate(10deg) scaleX(-1); } 
         }
 
-        /* CONTAINER (BLACK GLASS & FONT FIX) (AKTUALISIERT) */
+        /* CONTAINER (BLACK GLASS & FONT FIX) */
         #weihnachtsbotschaft {
             width: 90%; 
             max-width: 750px; 
-            padding: 20px 60px; 
+            padding: 20px 60px; /* STANDARD PADDING */
             text-align: center;
             position: relative; 
             z-index: 10;
-            margin: 40px auto; /* Zentriert und Abstand */
+            margin: 40px auto; 
             
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility; 
@@ -307,7 +305,7 @@
             transform-style: preserve-3d;
         }
         
-        /* SCHEREN: Styling und Positionierung (AKTUALISIERT) */
+        /* SCHEREN: Styling und Positionierung */
         #weihnachtsbotschaft::before,
         #weihnachtsbotschaft::after {
             content: '✂'; 
@@ -333,7 +331,7 @@
             animation: scissor-snip-mirror 0.5s infinite alternate ease-in-out; 
         }
 
-        /* Helle Spiegelung (AKTUALISIERT) */
+        /* Helle Spiegelung */
         .highlight-top {
             content: '';
             position: absolute;
@@ -348,9 +346,9 @@
         }
 
 
-        /* TEXT-STYLING (AKTUALISIERT) */
+        /* TEXT-STYLING */
         .titel {
-            font-size: 3em;
+            font-size: 3em; /* STANDARD FONT SIZE */
             color: var(--xmas-gold); 
             margin-bottom: 10px; 
             font-family: 'Georgia', serif; 
@@ -364,13 +362,12 @@
         }
 
         .hinweis {
-            /* Stil wie in Ihrem Code gewünscht */
             font-weight: bold;
             color: var(--xmas-white); 
             margin-bottom: 20px; 
             padding-bottom: 5px;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
-            font-size: 2em; /* Aus Inline-Style übernommen */
+            font-size: 2em; /* STANDARD FONT SIZE */
         }
         
         #weihnachtsbotschaft p {
@@ -382,7 +379,7 @@
         #weihnachtsbotschaft strong {
             color: var(--xmas-white);
             font-weight: 700;
-            font-size: 1.7em;
+            font-size: 1.7em; /* STANDARD FONT SIZE */
         }
 
         .gruss {
@@ -393,6 +390,37 @@
             color: var(--xmas-gold); 
             border-top: 1px solid var(--xmas-gold);
             padding-top: 10px; 
+        }
+        
+        /* ====================================
+           5. MOBILE OPTIMIERUNG (MAX-WIDTH: 600PX)
+           ==================================== */
+
+        @media (max-width: 600px) {
+            #weihnachtsbotschaft {
+                padding: 20px 20px; /* Padding für kleine Screens reduziert */
+            }
+            .titel {
+                font-size: 2em; /* Haupttitel verkleinert */
+            }
+            .hinweis {
+                font-size: 1.5em; /* Untertitel verkleinert */
+                margin-bottom: 15px;
+            }
+            #weihnachtsbotschaft p {
+                font-size: 1em; /* Standardtext leicht verkleinert */
+            }
+            #weihnachtsbotschaft strong {
+                font-size: 1.4em; /* Hervorgehobener Text verkleinert */
+            }
+            /* Anpassung der Scherenposition für kleinere Bildschirme */
+            #weihnachtsbotschaft::before,
+            #weihnachtsbotschaft::after {
+                font-size: 1.8em; 
+                top: 15px; 
+            }
+            #weihnachtsbotschaft::before { left: 10px; }
+            #weihnachtsbotschaft::after { right: 10px; }
         }
         
     </style>
@@ -642,10 +670,10 @@
                 loaderElm.style.display = 'none';
                 
             } catch (err) {
-                console.error(err);
-                loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
+                    console.error(err);
+                    loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
+                }
             }
-        }
         
         // Initialisiere die Ansicht: Startseite sichtbar, Galerie versteckt
         window.addEventListener('load', ()=>{
