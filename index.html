@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💈 Friseursalon Burkhard – Black Edition</title>
-    <!-- Tailwind CSS CDN (Beibehalten für dynamische Elemente/Grid-Layouts) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome für Icons (Sterne und Navigation) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
@@ -17,7 +15,7 @@
             --card: rgba(255, 255, 255, 0.05); /* Transparente Karte */
             --text-light: #fff;
             --muted: #aaa;
-            --gold: #ffd700; /* Vom Nutzer bereitgestelltes Gold */
+            --gold: #ffd700;
             --gold-light: #ffeb80; 
             --gold-shadow: rgba(255, 215, 0, 0.5);
             --transition-speed: 0.5s;
@@ -36,14 +34,14 @@
         .content-wrapper {
             max-width: 1200px;
             width: 95%;
-            margin: 0 auto; /* Oben/Unten 0, da der Banner/Footer den Raum füllt */
+            margin: 0 auto;
             padding: 0 10px 40px 10px; 
             flex-grow: 1;
             position: relative; 
         }
-        /* Standard-Sektionen (wird für Startseite und Galerie verwendet) */
+        /* Standard-Sektionen */
         .content-section {
-            padding: 20px 0; /* Padding nur für den inneren Inhalt, da die Startseite selbst volle Breite nutzt */
+            padding: 20px 0;
             transition: opacity var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
             opacity: 0;
             transform: translateY(20px);
@@ -64,134 +62,78 @@
         #haarschnitt-section:not(.show) {
             display: none;
         }
-        /* --- Navigation --- */
+        
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: relative; 
+            width: 100%;
+            background: #000;
+        }
+
         #navbar {
-            background-color: #050505; /* Sehr dunkler Hintergrund */
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            /* Positioniert unter dem Banner */
+            position: relative; 
+            background-color: #050505;
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .nav-button {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-weight: 600;
+            /* Stil wie zuletzt gewünscht: Klein, kein Box-Design */
+            padding: 5px 10px; 
+            border-radius: 0;
+            font-weight: 500;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 5px;
-            font-size: 0.9rem;
-            border: 2px solid transparent;
+            margin: 0 10px;
+            font-size: 0.85rem; 
+            background: none; 
+            border: none; 
+            box-shadow: none; 
         }
         .nav-button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px var(--gold-shadow);
+            opacity: 0.8;
+            transform: translateY(0); 
+            box-shadow: none;
         }
-        /* Styling für den Startseite-Button (Gold-Akzent) */
+        /* Styling für den Startseite-Button */
         #btnStartseite {
-            background-color: #333;
             color: var(--text-light);
-            border: 2px solid var(--muted);
         }
-        /* Spezielles Styling für den Haarschnitte-Button (GOLD) */
+        /* Spezielles Styling für den Haarschnitte-Button (Gold) */
         #btnHaarschnitt {
-            background: linear-gradient(180deg, var(--gold-light), var(--gold)); 
-            border: 2px solid var(--gold-light); 
-            color: #000; /* Dunkle Schrift auf Gold */
-            box-shadow: 0 4px 15px var(--gold-shadow);
-        }
-        /* --- Gästebuch Formular & Style-Anpassung an Black Edition --- */
-        
-        .guestbook-card {
-            background: rgba(255,255,255,0.05);
-            padding: 25px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-            transition: all 0.3s ease-in-out;
+            color: var(--gold-light); 
         }
         
-        .guestbook-card:hover {
-             box-shadow:0 0 40px rgba(255,255,255,0.9);
+        /* --- Banner Styles --- */
+        .header-banner { 
+            width:100%; 
+            overflow:hidden; 
+            display:flex; 
+            justify-content:center; 
+            align-items:center; 
+            position:relative; 
+            background:#000; 
         }
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 0.5rem;
-            border: 1px solid var(--muted);
-            background-color: rgba(0,0,0,0.5); /* Dunkler als der Hintergrund */
-            color: var(--text-light);
-            transition: border-color 0.3s;
+        .header-banner img { 
+            width:100%; 
+            height:auto; 
+            object-fit:contain; 
+            filter:brightness(1.2) contrast(1.1); 
+            border:none; 
         }
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(255,215,0,0.5);
-        }
-        .submit-btn {
-            background: var(--gold);
-            color: var(--dark-bg);
-            padding: 12px 25px;
-            border-radius: 0.5rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-        }
-        .submit-btn:disabled {
-            background-color: var(--muted);
-            cursor: not-allowed;
-            color: #111;
-        }
-        /* --- Star Rating --- */
-        .star-rating {
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        /* --- Gästebuch Einträge --- */
-        #messagesGrid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            margin-top: 30px;
-        }
-        .message-card {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 0.75rem;
-            box-shadow: 0 0 10px rgba(255,215,0,0.1);
-            border-left: 5px solid var(--gold);
-        }
-        .card-header {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--gold);
-            margin-bottom: 5px;
-        }
-        .card-info {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 10px;
-        }
-        .card-stars {
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-        /* --- Galerie Styling --- */
+        
+        /* --- Galerie Styling (3 Spalten) --- */
         #haarschnitt-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
         
         #haarschnitt-gallery img {
             width: 100%;
-            height: auto; /* <-- Geändert: Automatische Höhe, um das Bild vollständig zu zeigen */
+            height: auto; 
             border-radius: 0.75rem;
-            /* object-fit: cover; und aspect-ratio: 1 / 1; wurden entfernt, um das Bild nicht zu beschneiden */
             transition: transform 0.3s ease-in-out;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255,215,0,0.3);
@@ -208,27 +150,7 @@
             font-weight: 600;
             display: none;
         }
-        
-        /* Meldungsbereiche */
-        .message-box {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            display: none;
-        }
-        
-        #successMsg {
-            background-color: #10b98120;
-            color: #10b981;
-        }
-        
-        #errorMsg {
-            background-color: #ef444420; 
-            color: #ef4444;
-        }
-        
-        /* --- Benutzerdefinierte Burkhard-Styles (Vom Nutzer übernommen) --- */
+        /* --- Benutzerdefinierte Burkhard-Styles --- */
         p { margin:0; }
         .burkhard-container { width:90%; max-width:1200px; margin:0 auto; padding:20px 0; }
         h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
@@ -238,8 +160,6 @@
         .category h3 { text-align:center; margin-bottom:15px; font-weight:600; color: var(--gold); }
         .category ul { list-style:none; padding:0; }
         .category li { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
-        .header-banner { width:100%; overflow:hidden; display:flex; justify-content:center; align-items:center; position:relative; background:#000; }
-        .header-banner img { width:100%; height:auto; object-fit:contain; filter:brightness(1.2) contrast(1.1); border:none; }
         
         @media (max-width:768px) {
             .header-banner { background:#000; box-shadow:none; border:none; }
@@ -257,45 +177,75 @@
         .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
         .opening-hours li strong { color:var(--gold); }
         
-        footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
+        /* FOOOTER ANPASSUNG: Abstand oben entfernt und minimales Padding gesetzt */
+        footer { 
+            text-align:center; 
+            padding:15px 0 15px 0; 
+            background:#050505; 
+            color:#888; 
+            margin-top:0; /* Wichtig: Entfernt den großen, festen Abstand */
+            padding-top: 20px; /* Minimaler Abstand oben */
+            border-top:1px solid rgba(255,255,255,0.1); 
+        }
         footer a { color:var(--gold); text-decoration:none; margin:0 10px; }
         footer a:hover { text-decoration:underline; }
         .social-links { margin-top:15px; }
         .social-links a { display:inline-block; margin:0 8px; }
         .social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
         .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
+        /* Styling für den Besucherzähler */
+        #counter-wrapper {
+            text-align: center;
+            padding-top: 20px; 
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
         
     </style>
 </head>
 <body>
-    <!-- Navigationsleiste -->
+    <header>
+        <div class="header-banner">
+            <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/logo2.png" alt="Friseursalon Burkhard Banner">
+        </div>
+    </header>
+
     <nav id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-center h-16">
-                <div class="flex space-x-4">
+            <div class="flex items-center justify-center h-10">
+                <div class="flex space-x-2">
                     <button id="btnStartseite" class="nav-button">
-                        <i class="fas fa-home mr-2"></i> Startseite
+                        <i class="fas fa-home mr-1"></i> Startseite
                     </button>
                     <button id="btnHaarschnitt" class="nav-button">
-                        <i class="fas fa-cut mr-2"></i> Galerie
+                        <i class="fas fa-cut mr-1"></i> Galerie
                     </button>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Hauptinhalts-Wrapper -->
+    
     <main class="content-wrapper">
-        <!-- Sektion 1: Startseite & Gästebuch (Standardmäßig sichtbar) -->
         <section id="siteContent" class="content-section show">
             
-            <!-- START: Inhalt des Friseursalons Burkhard (Vom Nutzer bereitgestellt) -->
-            <div class="header-banner">
-                <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/logo2.png" alt="Friseursalon Burkhard Banner">
-            </div>
             <div class="welcome-section">
                 <h1>Willkommen bei Friseursalon Burkhard</h1>
                 <p>Schön, dass Sie hier sind! Seit vielen Jahren steht unser Salon für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haargefühl. Treten Sie ein, lehnen Sie sich zurück und genießen Sie die Kunst des Friseurhandwerks.</p>
             </div>
+            
+            <div class="gift-section">
+                <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
+                <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
+                <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
+                <p><strong>So einfach geht’s:</strong></p>
+                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px; margin-bottom: 20px;">
+                    <li>• Wunschbetrag festlegen.</li>
+                    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
+                    <li>• Freude und Verwöhnmomente verschenken!</li>
+                </ul>
+                <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
+            </div>
+            
             <div class="burkhard-container">
                 <h2>💇‍♂️ Preisliste</h2>
                 <div class="pricing">
@@ -339,21 +289,19 @@
                     </div>
                 </div>
             </div>
-            <!-- Gutschein Sektion -->
-            <div class="gift-section">
-                <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
-                <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
-                <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
-                <p><strong>So einfach geht’s:</strong></p>
-                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px; margin-bottom: 20px;">
-                    <li>• Wunschbetrag festlegen.</li>
-                    <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
-                    <li>• Freude und Verwöhnmomente verschenken!</li>
-                </ul>
-                <img src="https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/gutschein.gif" alt="Friseur Burkhard Geschenkgutschein">
-            </div>
+
             <div class="burkhard-container opening-hours">
-                <h2>📍 Kontakt</h2>
+                <h2>Öffnungszeiten & 📍 Kontakt</h2>
+                
+                <h3>Öffnungszeiten</h3>
+                <ul>
+                    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
+                    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
+                    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
+                    <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
+                </ul>
+
+                <h3 class="mt-8">Kontakt</h3>
                 <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
                 <p>📞 06207 2472</p>
                 <p>📧 friseur-burkhard@t-online.de</p>
@@ -362,61 +310,15 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
                     </a>
                 </div>
-                <h3>Öffnungszeiten</h3>
-                <ul>
-                    <li><strong>Montag:</strong><br> Geschlossen ⛔</li>
-                    <li><strong>Dienstag bis Freitag:</strong><br>🕗 08:00 – 12:00 Uhr<br>🕓 13:00 – 18:00 Uhr</li>
-                    <li><strong>Samstag:</strong><br>🕢 07:30 – 14:00 Uhr</li>
-                    <li><strong>Sonntag:</strong> <br>Geschlossen ⛔</li>
-                </ul>
-            </div>
-            
-            <!-- ENDE: Inhalt des Friseursalons Burkhard -->
-            <!-- START: Dynamic Guestbook Section (Stil angepasst) -->
-            <div class="burkhard-container mt-12 pt-6 border-t border-gray-700">
-                <h2 class="text-3xl font-bold text-white mb-6 text-center">Gästebuch & Bewertungen</h2>
-            </div>
-            <!-- Formular zum Senden -->
-            <form id="guestbookForm" class="max-w-xl mx-auto mb-10 guestbook-card">
-                <h3 class="text-2xl font-semibold mb-4 text-center" style="color: var(--gold);">Ihre Bewertung abgeben</h3>
                 
-                <!-- Nachrichtenbereich (Erfolg/Fehler) -->
-                <div id="successMsg" class="message-box" style="display:none;"></div>
-                <div id="errorMsg" class="message-box" style="display:none;"></div>
-                <div class="mb-4">
-                    <label for="guestName" class="block text-sm font-medium mb-1 text-gray-300">Ihr Name:</label>
-                    <input type="text" id="guestName" name="name" class="form-input" placeholder="Max Mustermann" required>
+                <div id="counter-wrapper">
+                    <p>Besucher gesamt:</p>
+                    <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=Friseur-Burkhard&start=00000&design=3g"></script>
                 </div>
-                <div class="mb-4">
-                    <label for="guestText" class="block text-sm font-medium mb-1 text-gray-300">Ihr Kommentar:</label>
-                    <textarea id="guestText" name="text" class="form-textarea" rows="4" placeholder="Teilen Sie uns Ihre Erfahrungen mit!" required></textarea>
-                </div>
-                <div class="mb-4 text-center">
-                    <label class="block text-sm font-medium mb-2 text-gray-300">Ihre Bewertung:</label>
-                    <div class="star-rating">
-                        <!-- Sternelemente mit data-rating Attributen -->
-                        <span data-rating="1"><i class="far fa-star"></i></span>
-                        <span data-rating="2"><i class="far fa-star"></i></span>
-                        <span data-rating="3"><i class="far fa-star"></i></span>
-                        <span data-rating="4"><i class="far fa-star"></i></span>
-                        <span data-rating="5"><i class="far fa-star"></i></span>
-                    </div>
-                    <!-- Verstecktes Feld für die Bewertung -->
-                    <input type="hidden" id="hiddenRating" name="rating" value="0">
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
-                </div>
-            </form>
-            <!-- Anzeigen der Einträge -->
-            <div id="messagesGrid" class="burkhard-container">
-                <!-- Einträge werden hier per JavaScript geladen -->
-                <p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Lade Einträge...</p>
+
             </div>
-            
-            <p id="currentUserId" class="text-xs text-center mt-6 text-gray-500"></p>
         </section>
-        <!-- Sektion 2: Haarschnitte Galerie (Standardmäßig versteckt) -->
+
         <section id="haarschnitt-section" class="content-section">
             <div class="burkhard-container">
                 <h1 class="text-4xl font-extrabold text-white mb-6 text-center">Haarschnitt Galerie</h1>
@@ -424,232 +326,30 @@
                 <div id="haarschnitt-loader" class="text-lg">
                     <i class="fas fa-spinner fa-spin mr-2"></i> Lade Bilder von GitHub...
                 </div>
-                <div id="haarschnitt-gallery">
-                    <!-- Bilder werden hier per JavaScript von GitHub geladen -->
-                </div>
+                <div id="haarschnitt-gallery" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                    </div>
             </div>
         </section>
     </main>
-    <!-- Footer des Friseursalons Burkhard (Vom Nutzer bereitgestellt) -->
     <footer>
         &copy; 2025 FRISEUR-BURKHARD | Black Edition & Precision<br>
         <a href="https://artonstyle.github.io/Friseursalon-Burkhard/datenschutz.html">Datenschutzerklärung</a> |
         <a href="https://artonstyle.github.io/Friseursalon-Burkhard/impressum.html">Impressum</a>
     </footer>
-    <!-- Firebase SDK Imports -->
+    
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        /* --- Globale Variablen & Firebase Konfiguration --- */
-        let db, auth, userId, appId;
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
-        // Element-Referenzen
-        const messagesGrid = document.getElementById('messagesGrid');
-        const form = document.getElementById("guestbookForm");
-        const successMsg = document.getElementById('successMsg');
-        const errorMsg = document.getElementById('errorMsg');
+        // Element-Referenzen (Nur die benötigten beibehalten)
         const btnStartseite = document.getElementById('btnStartseite');
         const btnHaarschnitt = document.getElementById('btnHaarschnitt');
         const siteContent = document.getElementById('siteContent');
         const haarschnittSection = document.getElementById('haarschnitt-section');
         const gallery = document.getElementById('haarschnitt-gallery');
         const loaderElm = document.getElementById('haarschnitt-loader');
-        const ratingInput = document.getElementById('hiddenRating');
         
         let imagesLoadedOnce = false;
-        /* --- Firebase Initialisierung und Authentifizierung --- */
-        async function initFirebase() {
-            try {
-                if (Object.keys(firebaseConfig).length === 0) {
-                    console.error("Firebase config is missing.");
-                    return;
-                }
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                setLogLevel('debug');
-                appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-                
-                // Anonyme oder Custom Token Authentifizierung
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                userId = auth.currentUser?.uid || crypto.randomUUID();
-                // Zeigt die Benutzer-ID an (Wichtig für das Multi-User-Debugging)
-                document.getElementById('currentUserId').textContent = `Nutzer-ID: ${userId}`;
-                
-                // Starte das Laden der Einträge, nachdem die Auth abgeschlossen ist
-                loadEntries();
-            } catch (error) {
-                console.error("Firebase Initialisierung oder Authentifizierung fehlgeschlagen:", error);
-                showCustomMessage(`Fehler: Initialisierung fehlgeschlagen. ${error.message}`, 'error');
-            }
-        }
-        /* --- Firestore Gastbucheinträge --- */
-        
-        function getGuestbookCollectionRef() {
-            if (!db || !userId) return null;
-            // Öffentlicher Pfad: /artifacts/{appId}/public/data/guestbook
-            const collectionPath = `artifacts/${appId}/public/data/guestbook`;
-            return collection(db, collectionPath);
-        }
-        // Lädt Einträge in Echtzeit mit onSnapshot
-        function loadEntries() {
-            const colRef = getGuestbookCollectionRef();
-            if (!colRef) return;
-            // Ladezustand anzeigen
-            messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
-            // Echtzeit-Listener einrichten
-            onSnapshot(colRef, (snapshot) => {
-                try {
-                    const entries = [];
-                    snapshot.forEach(doc => {
-                        entries.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    if (entries.length === 0) {
-                        messagesGrid.innerHTML = '<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>';
-                        return;
-                    }
-                    // Sortieren nach Datum (neueste zuerst)
-                    const sortedEntries = entries.sort((a, b) => {
-                        const dateA = new Date(a.date || 0).getTime();
-                        const dateB = new Date(b.date || 0).getTime();
-                        return dateB - dateA; 
-                    });
-                    const cardsHtml = sortedEntries.map(e => {
-                        const entryRating = e.rating ? parseInt(e.rating) : 0;
-                        let starHtml = '';
-                        for (let i = 1; i <= 5; i++) {
-                            starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
-                        }
-                        let dateString;
-                        try {
-                            const d = new Date(e.date);
-                            dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-                        } catch { dateString = 'Unbekanntes Datum'; }
-                        return `<div class="message-card">
-                                    <div class="card-header">${e.name || 'Anonym'}</div>
-                                    <div class="card-info">${dateString}</div>
-                                    <div class="card-stars">${starHtml}</div>
-                                    <p>${e.text}</p>
-                                </div>`;
-                    }).join('');
-                    messagesGrid.innerHTML = cardsHtml;
-                } catch (err) {
-                    console.error("Fehler beim Verarbeiten der Firestore-Einträge:", err);
-                    messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
-                }
-            }, (error) => {
-                console.error("Firestore Listener Fehler:", error);
-                messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold); grid-column: 1 / -1;">Fehler beim Abrufen der Einträge.</p>';
-            });
-        }
-        // Custom message display function (ersetzt alert())
-        function showCustomMessage(message, type) {
-            const msgEl = type === 'success' ? successMsg : errorMsg;
-            const otherMsgEl = type === 'success' ? errorMsg : successMsg;
-            
-            otherMsgEl.style.display = 'none'; // Andere Nachricht ausblenden
-            msgEl.textContent = message;
-            msgEl.style.display = 'block';
-            
-            if (type === 'success') {
-                // Erfolgsmeldungen nach 4 Sekunden ausblenden
-                setTimeout(() => { msgEl.style.display = 'none'; }, 4000);
-            }
-        }
-        /* --- Event Listener & Logik --- */
-        // Star rating logic
-        document.addEventListener("DOMContentLoaded", () => {
-            const stars = document.querySelectorAll('.star-rating span');
-            let rating = 0;
-            function updateStars(r) {
-               stars.forEach(s => {
-                  const icon = s.querySelector('i');
-                  if (parseInt(s.dataset.rating) <= r) {
-                     icon.classList.remove('far'); 
-                     icon.classList.add('fas');
-                  } else {
-                     icon.classList.remove('fas'); 
-                     icon.classList.add('far');
-                  }
-               });
-            }
-            
-            stars.forEach(star => {
-               star.addEventListener('click', () => {
-                  rating = parseInt(star.dataset.rating);
-                  updateStars(rating);
-                  ratingInput.value = rating;
-               });
-               star.addEventListener('mouseover', () => {
-                  updateStars(parseInt(star.dataset.rating)); 
-               });
-               star.addEventListener('mouseout', () => {
-                  updateStars(rating);
-               });
-            });
-            
-            // Initialisiere Firebase und lade Einträge
-            initFirebase();
-        });
-        // Submit handler (POST to Firestore)
-        form.addEventListener("submit", async e => {
-            e.preventDefault();
-            const name = document.getElementById("guestName").value.trim();
-            const text = document.getElementById("guestText").value.trim();
-            const rating = ratingInput ? ratingInput.value : '0';
-            if (!name || !text || rating === '0') { 
-                showCustomMessage("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!", 'error'); 
-                return; 
-            }
-            
-            const colRef = getGuestbookCollectionRef();
-            if (!colRef) {
-                showCustomMessage("Datenbank ist nicht bereit. Bitte warten Sie kurz und versuchen Sie es erneut.", 'error');
-                return;
-            }
-            const btn = form.querySelector('.submit-btn');
-            btn.disabled = true; 
-            btn.textContent = 'Wird gesendet...';
-            errorMsg.style.display = 'none'; 
-            try{
-                const newEntry = {
-                    name: name,
-                    text: text,
-                    rating: parseInt(rating),
-                    date: new Date().toISOString(), 
-                    userId: userId
-                };
-                // Daten in Firestore hinzufügen
-                await addDoc(colRef, newEntry);
-                
-                // Erfolg & Formular-Reset
-                form.reset();
-                // Sterne zurücksetzen
-                document.querySelectorAll('.star-rating span i').forEach(icon => { icon.classList.remove('fas'); icon.classList.add('far'); });
-                if(ratingInput) ratingInput.value='0';
-                
-                showCustomMessage("Vielen Dank! Ihr Eintrag wurde erfolgreich gespeichert.", 'success');
-                
-                // Dank onSnapshot muss loadEntries() nicht manuell aufgerufen werden.
-                
-            }catch(err){
-                console.error("Fehler beim Senden des Eintrags:", err);
-                showCustomMessage("Fehler beim Senden des Eintrags! Bitte versuchen Sie es später erneut.", 'error');
-            } finally {
-                btn.disabled = false; 
-                btn.textContent = 'EINTRAG SENDEN';
-            }
-        });
+
         /* ---------------------------
-            Gallery toggle & GitHub loader
+            Galerie/Navigations Logik
             --------------------------- */
         
         function showStartseite(){
@@ -686,18 +386,17 @@
         }
         btnStartseite.addEventListener('click', showStartseite);
         btnHaarschnitt.addEventListener('click', showHaarschnitt);
+        
         /* Load images from GitHub repo folder (Haarschnitte) using GitHub API */
         async function loadGithubImages(){
             loaderElm.style.display = 'block';
             gallery.innerHTML = '';
             try {
-                // <-- KORREKTE API-URL für dein Repo / Haarschnitte-Ordner:
                 const apiUrl = 'https://api.github.com/repos/Artonstyle/Friseursalon-Burkhard/contents/Haarschnitte';
                 
-                // Exponential Backoff für den Fetch-Aufruf
                 let response;
                 let delay = 1000;
-                const maxRetries = 3;
+                const maxRetries = 2;
                 for (let i = 0; i < maxRetries; i++) {
                     response = await fetch(apiUrl);
                     if (response.ok) break;
@@ -723,7 +422,7 @@
                 
                 images.forEach(f=>{
                     const img = document.createElement('img');
-                    // Download-URL vom API-Response liefert bereits die raw URL, fallback auf raw.githubusercontent:
+                    // Download-URL vom API-Response
                     img.src = f.download_url || `https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/Haarschnitte/${encodeURIComponent(f.name)}`;
                     img.alt = f.name.replace(/\.[^/.]+$/, ""); // Dateiendung entfernen
                     img.loading = 'lazy'; 
@@ -738,9 +437,9 @@
                 loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
             }
         }
-        // Sicherstellen, dass siteContent beim Laden mit Animation angezeigt wird
+        
+        // Initialisiere die Ansicht: Startseite sichtbar, Galerie versteckt
         window.addEventListener('load', ()=>{
-            // Initialisiere die Ansicht: Startseite sichtbar, Galerie versteckt
             siteContent.classList.add('show');
             siteContent.style.transform = 'translateY(0)';
             siteContent.style.position = 'relative';
