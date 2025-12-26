@@ -19,15 +19,6 @@
             --gold-light: #ffeb80; 
             --gold-shadow: rgba(255, 215, 0, 0.5);
             --transition-speed: 0.5s;
-
-            /* WEIHNACHTS VARIABLEN */
-            --xmas-red: #C52020;
-            --xmas-gold: #FFD700;
-            --xmas-white: #FFFFFF;
-            --xmas-green: #00A040;
-            --xmas-dark: #000000;
-            --glow-blue: rgba(0, 100, 150, 0.2);
-            --glow-gold: rgba(200, 150, 0, 0.3);
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -38,26 +29,7 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            perspective: 1500px;
-            background-image: radial-gradient(circle, #0a0a0a 5%, var(--xmas-dark) 90%);
         }
-        /* HINTERGRUND-BELEUCHTUNG für Body */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 10%, var(--glow-blue) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, var(--glow-gold) 0%, transparent 40%);
-            mix-blend-mode: screen; 
-            opacity: 0.3; 
-            pointer-events: none;
-            z-index: 1;
-        }
-
         /* --- Layout & Dynamic Sections --- */
         .content-wrapper {
             max-width: 1200px;
@@ -86,6 +58,7 @@
             position: relative; 
         }
         
+        /* Die Galerie-Sektion beim Laden unsichtbar machen, wenn sie nicht 'show' ist */
         #haarschnitt-section:not(.show) {
             display: none;
         }
@@ -98,6 +71,7 @@
         }
 
         #navbar {
+            /* Positioniert unter dem Banner */
             position: relative; 
             background-color: #050505;
             padding: 0.5rem 0;
@@ -105,6 +79,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .nav-button {
+            /* Stil wie zuletzt gewünscht: Klein, kein Box-Design */
             padding: 5px 10px; 
             border-radius: 0;
             font-weight: 500;
@@ -122,9 +97,11 @@
             transform: translateY(0); 
             box-shadow: none;
         }
+        /* Styling für den Startseite-Button */
         #btnStartseite {
             color: var(--text-light);
         }
+        /* Spezielles Styling für den Haarschnitte-Button (Gold) */
         #btnHaarschnitt {
             color: var(--gold-light); 
         }
@@ -147,7 +124,7 @@
             border:none; 
         }
         
-        /* --- Galerie Styling --- */
+        /* --- Galerie Styling (3 Spalten) --- */
         #haarschnitt-gallery {
             gap: 15px;
             margin-top: 20px;
@@ -177,11 +154,7 @@
         p { margin:0; }
         .burkhard-container { width:90%; max-width:1200px; margin:0 auto; padding:20px 0; }
         h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-        .pricing { 
-            display:grid; 
-            grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); 
-            gap:25px; 
-        }
+        .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
         .category { background: var(--card); padding:25px; border-radius:15px; backdrop-filter: blur(10px); box-shadow:0 0 20px rgba(255,255,255,0.3); transition:all 0.3s ease-in-out; }
         .category:hover { box-shadow:0 0 40px var(--gold-shadow); transform:translateY(-5px); }
         .category h3 { text-align:center; margin-bottom:15px; font-weight:600; color: var(--gold); }
@@ -198,28 +171,20 @@
         .welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
         .gift-section { text-align:center; margin:60px auto; background:var(--card); padding:40px 20px; border-radius:15px; box-shadow:0 0 25px rgba(255,255,255,0.2); max-width:900px; }
         .gift-section h2 { color:var(--gold); text-shadow:0 0 15px rgba(255,215,0,0.8); margin-bottom:20px; }
-        .gift-section img { 
-            width:100%; 
-            max-width:700px; 
-            border-radius:10px; 
-            box-shadow:0 0 25px var(--gold-shadow); 
-            height:auto;
-            display: block; 
-            margin: 20px auto 0 auto; 
-        }
+        .gift-section img { width:100%; max-width:700px; border-radius:10px; box-shadow:0 0 25px var(--gold-shadow); height:auto; }
         .opening-hours { margin-top:20px; text-align:center; }
         .opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
         .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
         .opening-hours li strong { color:var(--gold); }
         
-        /* FOOOTER ANPASSUNG */
+        /* FOOOTER ANPASSUNG: Abstand oben entfernt und minimales Padding gesetzt */
         footer { 
             text-align:center; 
             padding:15px 0 15px 0; 
             background:#050505; 
             color:#888; 
-            margin-top:0; 
-            padding-top: 20px; 
+            margin-top:0; /* Wichtig: Entfernt den großen, festen Abstand */
+            padding-top: 20px; /* Minimaler Abstand oben */
             border-top:1px solid rgba(255,255,255,0.1); 
         }
         footer a { color:var(--gold); text-decoration:none; margin:0 10px; }
@@ -234,193 +199,6 @@
             padding-top: 20px; 
             color: var(--muted);
             font-size: 0.8rem;
-        }
-
-        /* ====================================
-           WEIHNACHTS-MITTEILUNG STYLES 
-           ==================================== */
-        
-        /* CSS-ANIMATIONEN & KEYFRAMES */
-        @keyframes border-run {
-            from { border-image-source: conic-gradient(from 0deg, var(--xmas-gold), var(--xmas-red), var(--xmas-white), var(--xmas-gold)); }
-            to { border-image-source: conic-gradient(from 360deg, var(--xmas-gold), var(--xmas-red), var(--xmas-white), var(--xmas-gold)); }
-        }
-        
-        @keyframes shadow-pulse {
-            0%, 100% { box-shadow: 0 5px 30px rgba(255, 215, 0, 0.5); }
-            50% { box-shadow: 0 20px 50px rgba(197, 32, 32, 0.8); }
-        }
-
-        @keyframes box-float {
-            0% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
-            25% { transform: translateZ(30px) rotateX(1deg) rotateY(2deg); }
-            50% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
-            75% { transform: translateZ(-30px) rotateX(-1deg) rotateY(-2deg); }
-            100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
-        }
-        
-        @keyframes text-glow {
-            from { text-shadow: 0 0 5px var(--xmas-red), 0 0 10px var(--xmas-gold), 0 0 20px var(--xmas-gold); }
-            to { text-shadow: 0 0 10px var(--xmas-red), 0 0 20px var(--xmas-gold), 0 0 40px var(--xmas-gold); }
-        }
-
-        @keyframes scissor-snip {
-            0%, 100% { transform: rotate(-30deg); } 
-            50% { transform: rotate(-10deg); } 
-        }
-        @keyframes scissor-snip-mirror {
-            0%, 100% { transform: rotate(30deg) scaleX(-1); } 
-            50% { transform: rotate(10deg) scaleX(-1); } 
-        }
-
-        /* CONTAINER (BLACK GLASS & FONT FIX) */
-        #weihnachtsbotschaft {
-            width: 90%; 
-            max-width: 750px; 
-            padding: 20px 60px; /* STANDARD PADDING */
-            text-align: center;
-            position: relative; 
-            z-index: 10;
-            margin: 40px auto; 
-            
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility; 
-
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px) saturate(1.8);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-                        0 15px 50px rgba(0, 0, 0, 0.9);
-            
-            border-radius: 20px; 
-            color: var(--xmas-white); 
-            
-            border: 6px solid transparent; 
-            border-image: conic-gradient(from 0deg, var(--xmas-gold), var(--xmas-red), var(--xmas-white), var(--xmas-gold)) 1; 
-            
-            animation: 
-                border-run 4s linear infinite, 
-                shadow-pulse 4s infinite alternate ease-in-out,
-                box-float 12s infinite ease-in-out;
-            
-            transform-style: preserve-3d;
-        }
-        
-        /* SCHEREN: Styling und Positionierung */
-        #weihnachtsbotschaft::before,
-        #weihnachtsbotschaft::after {
-            content: '✂'; 
-            position: absolute;
-            top: 10px; 
-            font-size: 2.2em;
-            color: var(--xmas-gold);
-            font-family: sans-serif; 
-            text-shadow: 0 0 5px var(--xmas-red);
-            z-index: 15;
-            transform-origin: 50% 50%; 
-        }
-
-        /* Schere links oben */
-        #weihnachtsbotschaft::before {
-            left: 15px;
-            animation: scissor-snip 0.5s infinite alternate ease-in-out; 
-        }
-
-        /* Schere rechts oben (Gespiegelt) */
-        #weihnachtsbotschaft::after {
-            right: 15px;
-            animation: scissor-snip-mirror 0.5s infinite alternate ease-in-out; 
-        }
-
-        /* Helle Spiegelung */
-        .highlight-top {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent); 
-            border-radius: 20px 20px 0 0;
-            pointer-events: none;
-            z-index: 11;
-        }
-
-
-        /* TEXT-STYLING */
-        .titel {
-            font-size: 3em; /* STANDARD FONT SIZE */
-            color: var(--xmas-gold); 
-            margin-bottom: 10px; 
-            font-family: 'Georgia', serif; 
-            font-weight: bold; 
-            
-            text-shadow: 
-                0 0 5px var(--xmas-red),  
-                0 0 15px var(--xmas-gold), 
-                0 0 30px var(--xmas-gold); 
-            animation: text-glow 2s infinite alternate;
-        }
-
-        .hinweis {
-            font-weight: bold;
-            color: var(--xmas-white); 
-            margin-bottom: 20px; 
-            padding-bottom: 5px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
-            font-size: 2em; /* STANDARD FONT SIZE */
-        }
-        
-        #weihnachtsbotschaft p {
-            font-size: 1.1em;
-            line-height: 1.4; 
-            margin-bottom: 10px; 
-        }
-
-        #weihnachtsbotschaft strong {
-            color: var(--xmas-white);
-            font-weight: 700;
-            font-size: 1.7em; /* STANDARD FONT SIZE */
-        }
-
-        .gruss {
-            margin-top: 20px; 
-            font-size: 1.2em;
-            font-style: italic;
-            font-weight: bold;
-            color: var(--xmas-gold); 
-            border-top: 1px solid var(--xmas-gold);
-            padding-top: 10px; 
-        }
-        
-        /* ====================================
-           5. MOBILE OPTIMIERUNG (MAX-WIDTH: 600PX)
-           ==================================== */
-
-        @media (max-width: 600px) {
-            #weihnachtsbotschaft {
-                padding: 20px 20px; /* Padding für kleine Screens reduziert */
-            }
-            .titel {
-                font-size: 2em; /* Haupttitel verkleinert */
-            }
-            .hinweis {
-                font-size: 1.5em; /* Untertitel verkleinert */
-                margin-bottom: 15px;
-            }
-            #weihnachtsbotschaft p {
-                font-size: 1em; /* Standardtext leicht verkleinert */
-            }
-            #weihnachtsbotschaft strong {
-                font-size: 1.4em; /* Hervorgehobener Text verkleinert */
-            }
-            /* Anpassung der Scherenposition für kleinere Bildschirme */
-            #weihnachtsbotschaft::before,
-            #weihnachtsbotschaft::after {
-                font-size: 1.8em; 
-                top: 15px; 
-            }
-            #weihnachtsbotschaft::before { left: 10px; }
-            #weihnachtsbotschaft::after { right: 10px; }
         }
         
     </style>
@@ -455,28 +233,12 @@
                 <p>Schön, dass Sie hier sind! Seit vielen Jahren steht unser Salon für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haargefühl. Treten Sie ein, lehnen Sie sich zurück und genießen Sie die Kunst des Friseurhandwerks.</p>
             </div>
             
-            <div id="weihnachtsbotschaft">
-                <div class="highlight-top"></div>
-                
-                <h1 class="titel">Liebe Kunden</h1>
-                <p class="hinweis">Bitte beachten Sie</p>
-
-                <p>Am <br><strong>Montag den 22.12.2025</strong><br> Bleibt unser Geschäft für Sie geöffnet.</p>
-                
-                <p>Gerne können Sie sich noch einen Termin vor Weihnachten sichern.</p>
-
-                <p class="gruss">
-                    Vielen Dank<br>
-                    Ihr Friseurteam Burkhard
-                </p>
-            </div>
-            
             <div class="gift-section">
                 <h2>🎁 Verschenken Sie Freude - mit unseren Geschenkgutschein!</h2>
                 <p>Sie möchten Ihren Liebsten, Freunden oder Kollegen eine besondere Freude machen? Schenken Sie Schönheit, Entspannung und ein neues Styling mit unseren Geschenkgutscheinen!</p>
                 <p>Ob für einen Haarschnitt, eine Farbveränderung, eine Pflegebehandlung oder ein komplettes Makeover – unsere Gutscheine sind die ideale Wahl für jeden Anlass.</p>
                 <p><strong>So einfach geht’s:</strong></p>
-                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px;">
+                <ul style="list-style:none; text-align:left; display:inline-block; text-align:left; color:#ddd; margin-top: 10px; margin-bottom: 20px;">
                     <li>• Wunschbetrag festlegen.</li>
                     <li>• Gutschein bei uns im Salon abholen oder bequem telefonisch bestellen.</li>
                     <li>• Freude und Verwöhnmomente verschenken!</li>
@@ -529,6 +291,7 @@
             </div>
 
             <div class="burkhard-container opening-hours">
+                <h2>Öffnungszeiten & 📍 Kontakt</h2>
                 
                 <h3>Öffnungszeiten</h3>
                 <ul>
@@ -539,7 +302,7 @@
                 </ul>
 
                 <h3 class="mt-8">Kontakt</h3>
-                <p>Bürgermeister-Stein-Straße 49, <br>69483 Wald-Michelbach</p>
+                <p>Bürgermeister-Stein-Straße 49, 69483 Wald-Michelbach</p>
                 <p>📞 06207 2472</p>
                 <p>📧 friseur-burkhard@t-online.de</p>
                 <div class="social-links">
@@ -558,7 +321,7 @@
 
         <section id="haarschnitt-section" class="content-section">
             <div class="burkhard-container">
-                <h1 class="text-4xl font-extrabold text-white mb-6 ">Haarschnitt Galerie</h1>
+                <h1 class="text-4xl font-extrabold text-white mb-6 text-center">Haarschnitt Galerie</h1>
                 <p class="text-center text-gray-300 mb-8">Eine Auswahl der besten Schnitte, sehen sie in denn bildern hier.</p>
                 <div id="haarschnitt-loader" class="text-lg">
                     <i class="fas fa-spinner fa-spin mr-2"></i> Lade Bilder von GitHub...
@@ -670,10 +433,10 @@
                 loaderElm.style.display = 'none';
                 
             } catch (err) {
-                    console.error(err);
-                    loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
-                }
+                console.error(err);
+                loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
             }
+        }
         
         // Initialisiere die Ansicht: Startseite sichtbar, Galerie versteckt
         window.addEventListener('load', ()=>{
