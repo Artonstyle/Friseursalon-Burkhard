@@ -7,13 +7,10 @@
     <style>
         :root {
             --primary: #2a2a2a;
-            --accent: #f2c94c;
+            --accent: #9ab8d6;
             --white: #ffffff;
             --bg-gradient:
-                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.90), transparent 18%),
-                radial-gradient(circle at 78% 16%, rgba(255, 255, 255, 0.80), transparent 16%),
-                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.34), transparent 34%),
-                linear-gradient(180deg, #2f73c8 0%, #4a8fe0 36%, #77b0f0 70%, #d9ecff 100%);
+                linear-gradient(180deg, #8ac7ff 0%, #bfe3ff 18%, #e5f6ff 34%, #f3e8cf 58%, #e7d6b5 80%, #f7efe0 100%);
         }
 
         * {
@@ -38,30 +35,35 @@
             inset: -10vh -10vw 0;
             pointer-events: none;
             background:
-                radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.96) 0 8%, rgba(255, 255, 255, 0.82) 9%, transparent 22%),
-                radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.94) 0 9%, transparent 24%),
-                radial-gradient(circle at 76% 12%, rgba(255, 255, 255, 0.94) 0 8%, rgba(255, 255, 255, 0.74) 9%, transparent 23%),
-                radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.92) 0 9%, transparent 24%),
-                radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.32) 0 11%, transparent 32%);
-            opacity: 0.74;
-            filter: blur(11px);
-            animation: skyDrift 24s linear infinite;
+                radial-gradient(circle at 16% 16%, rgba(255, 255, 255, 0.78) 0 7%, rgba(255, 255, 255, 0.48) 8%, transparent 18%),
+                radial-gradient(circle at 80% 14%, rgba(255, 255, 255, 0.66) 0 6%, rgba(255, 255, 255, 0.34) 7%, transparent 18%),
+                radial-gradient(circle at 52% 24%, rgba(255, 255, 255, 0.36) 0 9%, transparent 24%);
+            opacity: 0.58;
+            filter: blur(14px);
+            animation: skyDrift 34s linear infinite;
             z-index: 0;
         }
 
         body::after {
             content: "";
             position: fixed;
-            inset: auto -8vw 8vh -8vw;
-            height: 28vh;
+            left: 0;
+            right: 0;
+            bottom: -4vh;
+            height: 56vh;
             pointer-events: none;
             background:
-                radial-gradient(ellipse at 20% 60%, rgba(255, 255, 255, 0.26) 0 18%, transparent 42%),
-                radial-gradient(ellipse at 52% 40%, rgba(255, 255, 255, 0.20) 0 16%, transparent 40%),
-                radial-gradient(ellipse at 82% 64%, rgba(255, 255, 255, 0.24) 0 18%, transparent 44%);
-            filter: blur(18px);
-            opacity: 0.65;
-            animation: cloudSlide 34s linear infinite;
+                radial-gradient(ellipse at 50% 104%, rgba(145, 115, 70, 0.45) 0 18%, rgba(145, 115, 70, 0.18) 19%, transparent 34%),
+                radial-gradient(ellipse at 18% 106%, rgba(197, 176, 129, 0.86) 0 16%, transparent 36%),
+                radial-gradient(ellipse at 80% 108%, rgba(184, 160, 113, 0.80) 0 15%, transparent 35%),
+                radial-gradient(ellipse at 48% 92%, rgba(223, 205, 165, 0.92) 0 14%, rgba(223, 205, 165, 0.28) 20%, transparent 54%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(183, 225, 248, 0.16) 14%, rgba(140, 200, 240, 0.22) 26%, rgba(225, 201, 151, 0.20) 48%, rgba(179, 150, 99, 0.18) 100%);
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            opacity: 0.82;
+            filter: blur(2px) saturate(0.96) brightness(1.02);
+            transform: scale(1.02);
             z-index: 0;
         }
 
@@ -71,18 +73,12 @@
             100% { transform: translate3d(0, 0, 0) scale(1); }
         }
 
-        @keyframes cloudSlide {
-            0%   { transform: translate3d(-2vw, 0, 0); }
-            50%  { transform: translate3d(2vw, -1vh, 0); }
-            100% { transform: translate3d(-2vw, 0, 0); }
-        }
-
         header {
             position: relative;
-            z-index: 1;
-            background-color: #2f73c8;
+            z-index: 2;
+            background-color: #9fb6c7;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.08), rgba(24, 77, 151, 0.20)),
+                linear-gradient(rgba(248, 248, 235, 0.08), rgba(90, 110, 122, 0.18)),
                 url('https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/balaton.png');
             background-size: 100% 100%, 100% 100%;
             background-repeat: no-repeat, no-repeat;
@@ -268,7 +264,7 @@
         }
 
         footer {
-            background-color: var(--primary);
+            background: rgba(42, 42, 42, 0.82);
             color: var(--white);
             text-align: center;
             padding: 40px 0;
