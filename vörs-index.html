@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vörs am Kiss-Balaton | Tourismus</title>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --accent: #d4a373;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #fdfcf0 0%, #e0e9d0 50%, #d4e0bb 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #dfe8c8;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.38)),
+                url('https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/balaton.png');
+            background-size: 100% 100%, 100% 100%;
+            background-repeat: no-repeat, no-repeat;
+            background-position: center center, center center;
+            color: var(--white);
+            min-height: 78vh;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            font-weight: 300;
+        }
+
+        .container {
+            position: relative;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .label-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .card-label {
+            position: absolute;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            width: max-content;
+            white-space: nowrap;
+            transform: rotate(-45deg) scale(0.72);
+            transform-origin: left center;
+            pointer-events: none;
+        }
+
+        .card-label .name {
+            display: block;
+            font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+        }
+
+        .card-label .tagline {
+            display: block;
+            margin-top: 4px;
+            font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(44, 94, 26, 0.15);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 12px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(44, 94, 26, 0.25);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .card-content {
+            padding: 35px;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 12px;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin: 20px 0 0 0;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .card li::marker {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        @media (min-width: 601px) {
+            .container {
+                display: grid;
+                grid-template-columns: 320px minmax(0, 1fr);
+                column-gap: 24px;
+                align-items: start;
+                transform: translateX(-180px);
+            }
+
+            .label-layer {
+                position: relative;
+                inset: auto;
+                grid-column: 1;
+                grid-row: 1;
+                min-height: 100%;
+            }
+
+            .grid {
+                grid-column: 2;
+                margin-left: 0;
+                transform: translateX(-120px);
+            }
+
+            .card-label {
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: left;
+                width: 220px;
+            }
+
+            .card-label .name {
+                align-self: center;
+            }
+
+            .card-label .tagline {
+                align-self: flex-start;
+            }
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                min-height: 52vh;
+                padding: 60px 20px;
+            }
+
+            .label-layer {
+                position: static;
+                pointer-events: auto;
+            }
+
+            .card-label {
+                position: static;
+                transform: none;
+                margin: 0 0 14px 0;
+                white-space: normal;
+            }
+
+            .card-label .name {
+                font-size: 1.35rem;
+            }
+
+            .card-label .tagline {
+                font-size: 1rem;
+            }
+
+            .card-content { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Vörs am Kiss-Balaton</h1>
+    <p>Die Fahrrad-Hauptstadt der Region entdecken</p>
+</header>
+
+<div class="container">
+    <div class="label-layer">
+        <div class="card-label" data-card-label="1">
+            <span class="name">Vörs</span>
+            <span class="tagline">liebenswert und Welt offen</span>
+        </div>
+        <div class="card-label" data-card-label="2">
+            <span class="name">Vörs</span>
+            <span class="tagline">freundlich kulinarisch</span>
+        </div>
+        <div class="card-label" data-card-label="3">
+            <span class="name">Vörs</span>
+            <span class="tagline">inovativ bembelpower</span>
+        </div>
+        <div class="card-label" data-card-label="4">
+            <span class="name">Vörs</span>
+            <span class="tagline">umweltfreundlich modern</span>
+        </div>
+        <div class="card-label" data-card-label="5">
+            <span class="name">Vörs</span>
+            <span class="tagline">Tradition und Geschichte</span>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-content">
+                <h3>Vörs am Kiss-Balaton</h3>
+                <ul>
+                    <li>Die Fahrrad Hauptstadt am Balaton</li>
+                    <li>Bequem über neu ausgebauten Radweg zu erreichen</li>
+                    <li>Geführte Touren rund um den Kiss-Balaton buchbar</li>
+                    <li>Büffelreservat Kapolnapuszta Rundtour ca. 30km mit abschließendem Pasta-Essen in Vörs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Kulinarik</h3>
+                <ul>
+                    <li>Dampfnudelparadies am Balaton</li>
+                    <li>Täglich großes Kuchenbuffet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Home of the Bembel</h3>
+                <ul>
+                    <li>Allein-Vertrieb für Ungarn</li>
+                    <li>Traditioneller Apfelwein (100% Äpfel)</li>
+                    <li>Apfelwein pur, mit Cola, mit Kirsche</li>
+                    <li>Als Schorle oder Gold mit Quitte</li>
+                    <li>Winterapfelglühwein kalt und heiß genießen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Übernachtung</h3>
+                <ul>
+                    <li>Camping-Erlebnisse</li>
+                    <li>Moderne Stellplätze für Wohnmobile und Zelte</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Weihnachten in Vörs</h3>
+                <ul>
+                    <li>Größte Weihnachtskrippe Europas in der Dorfkirche</li>
+                    <li>Traumhafter Weihnachtsmarkt mit traditionellem Essen</li>
+                    <li>Handgemachte Kunstwerke aus der Umgebung</li>
+                    <li><strong>Geöffnet ab 30. November 2026</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Natur & Kultur</h3>
+                <p>Erkunden Sie das Kiss-Balaton Haus, das Heimatmuseum Talpasház und die einzigartige Vogelwelt im Nationalpark.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Tourismusverband Vörs - Ihr Ziel am Kiss-Balaton</p>
+</footer>
+
+<script>
+    (function () {
+        const labels = Array.from(document.querySelectorAll('.card-label'));
+        const cards = Array.from(document.querySelectorAll('.grid .card'));
+        if (!labels.length || !cards.length) return;
+
+        function positionLabels() {
+            if (window.matchMedia('(max-width: 600px)').matches) return;
+
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            labels.forEach((label, index) => {
+                const card = cards[index];
+                if (!card) return;
+                const cardRect = card.getBoundingClientRect();
+                const labelHeight = label.offsetHeight || 0;
+                label.style.left = '0';
+                label.style.top = `${cardRect.top - containerRect.top + (cardRect.height / 2) - (labelHeight / 2) + 70}px`;
+            });
+        }
+
+        window.addEventListener('load', positionLabels);
+        window.addEventListener('resize', positionLabels);
+        positionLabels();
+    })();
+</script>
+
+</body>
+</html>
