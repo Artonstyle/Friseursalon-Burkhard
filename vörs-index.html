@@ -12,9 +12,9 @@
             --bg-gradient: linear-gradient(135deg, #fdfcf0 0%, #e0e9d0 50%, #d4e0bb 100%);
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -115,6 +115,7 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-left: 12px solid var(--primary);
             transition: all 0.3s ease;
+            min-height: auto;
         }
 
         .card:hover {
@@ -125,6 +126,8 @@
 
         .card-content {
             padding: 35px;
+            min-height: auto;
+            display: block;
         }
 
         .card h3 {
@@ -144,11 +147,17 @@
         .card li {
             margin-bottom: 12px;
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .card li::marker {
             color: var(--accent);
             font-size: 1.2rem;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            margin: 20px 0 0;
         }
 
         @media (min-width: 601px) {
@@ -183,13 +192,8 @@
                 width: 220px;
             }
 
-            .card-label .name {
-                align-self: center;
-            }
-
-            .card-label .tagline {
-                align-self: flex-start;
-            }
+            .card-label .name { align-self: center; }
+            .card-label .tagline { align-self: flex-start; }
         }
 
         footer {
@@ -204,30 +208,54 @@
         @media (max-width: 600px) {
             header {
                 min-height: 52vh;
-                padding: 60px 20px;
+                padding: 56px 14px;
             }
 
-            .label-layer {
-                position: static;
-                pointer-events: auto;
+            .container {
+                display: grid;
+                grid-template-columns: 320px minmax(0, 1fr);
+                column-gap: 18px;
+                align-items: start;
+                transform: translateX(-34px) scale(0.78);
+                transform-origin: top left;
+                width: calc(100% / 0.78);
             }
 
             .card-label {
-                position: static;
-                transform: none;
-                margin: 0 0 14px 0;
-                white-space: normal;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: left;
+                width: 220px;
+                transform: rotate(-45deg) scale(0.72);
+                transform-origin: left center;
+            }
+
+            .label-layer {
+                position: relative;
+                inset: auto;
+                grid-column: 1;
+                grid-row: 1;
+                min-height: 100%;
+            }
+
+            .grid {
+                grid-column: 2;
+                transform: translateX(-120px);
             }
 
             .card-label .name {
-                font-size: 1.35rem;
+                font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+                align-self: center;
             }
 
             .card-label .tagline {
-                font-size: 1rem;
+                font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+                align-self: flex-start;
             }
 
-            .card-content { padding: 25px; }
+            .card-content { padding: 35px; }
         }
     </style>
 </head>
@@ -238,7 +266,7 @@
     <p>Die Fahrrad-Hauptstadt der Region entdecken</p>
 </header>
 
-<div class="container">
+<div class="container" id="highlights">
     <div class="label-layer">
         <div class="card-label" data-card-label="1">
             <span class="name">Vörs</span>
@@ -263,7 +291,7 @@
     </div>
 
     <div class="grid">
-        <div class="card">
+        <div class="card" id="tourismus">
             <div class="card-content">
                 <h3>Vörs am Kiss-Balaton</h3>
                 <ul>
