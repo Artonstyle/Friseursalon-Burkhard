@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -6,15 +6,19 @@
     <title>Vörs am Kiss-Balaton | Tourismus</title>
     <style>
         :root {
-            --primary: #1b4332;
-            --accent: #d4a373;
+            --primary: #2a2a2a;
+            --accent: #f2c94c;
             --white: #ffffff;
-            --bg-gradient: linear-gradient(135deg, #fdfcf0 0%, #e0e9d0 50%, #d4e0bb 100%);
+            --bg-gradient:
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.90), transparent 18%),
+                radial-gradient(circle at 78% 16%, rgba(255, 255, 255, 0.80), transparent 16%),
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.34), transparent 34%),
+                linear-gradient(180deg, #2f73c8 0%, #4a8fe0 36%, #77b0f0 70%, #d9ecff 100%);
         }
 
-        * { box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -22,14 +26,63 @@
             padding: 0;
             background: var(--bg-gradient);
             background-attachment: fixed;
-            color: #2d3436;
+            color: #252525;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -10vh -10vw 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.96) 0 8%, rgba(255, 255, 255, 0.82) 9%, transparent 22%),
+                radial-gradient(circle at 22% 22%, rgba(255, 255, 255, 0.94) 0 9%, transparent 24%),
+                radial-gradient(circle at 76% 12%, rgba(255, 255, 255, 0.94) 0 8%, rgba(255, 255, 255, 0.74) 9%, transparent 23%),
+                radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.92) 0 9%, transparent 24%),
+                radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.32) 0 11%, transparent 32%);
+            opacity: 0.74;
+            filter: blur(11px);
+            animation: skyDrift 24s linear infinite;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: auto -8vw 8vh -8vw;
+            height: 28vh;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 20% 60%, rgba(255, 255, 255, 0.26) 0 18%, transparent 42%),
+                radial-gradient(ellipse at 52% 40%, rgba(255, 255, 255, 0.20) 0 16%, transparent 40%),
+                radial-gradient(ellipse at 82% 64%, rgba(255, 255, 255, 0.24) 0 18%, transparent 44%);
+            filter: blur(18px);
+            opacity: 0.65;
+            animation: cloudSlide 34s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes skyDrift {
+            0%   { transform: translate3d(0, 0, 0) scale(1); }
+            50%  { transform: translate3d(3vw, 1.5vh, 0) scale(1.03); }
+            100% { transform: translate3d(0, 0, 0) scale(1); }
+        }
+
+        @keyframes cloudSlide {
+            0%   { transform: translate3d(-2vw, 0, 0); }
+            50%  { transform: translate3d(2vw, -1vh, 0); }
+            100% { transform: translate3d(-2vw, 0, 0); }
         }
 
         header {
-            background-color: #dfe8c8;
+            position: relative;
+            z-index: 1;
+            background-color: #2f73c8;
             background-image:
-                linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.38)),
+                linear-gradient(rgba(255, 255, 255, 0.08), rgba(24, 77, 151, 0.20)),
                 url('https://raw.githubusercontent.com/Artonstyle/Friseursalon-Burkhard/main/images/balaton.png');
             background-size: 100% 100%, 100% 100%;
             background-repeat: no-repeat, no-repeat;
@@ -64,6 +117,7 @@
             max-width: 1100px;
             margin: 50px auto;
             padding: 0 20px;
+            z-index: 1;
         }
 
         .label-layer {
@@ -113,21 +167,38 @@
             box-shadow: 0 10px 25px rgba(44, 94, 26, 0.15);
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            border-left: 12px solid var(--primary);
+            border-left: 12px solid var(--accent);
             transition: all 0.3s ease;
-            min-height: auto;
+            animation: cardBob 10s ease-in-out infinite;
+            will-change: transform;
         }
 
         .card:hover {
             transform: scale(1.02);
             box-shadow: 0 15px 35px rgba(44, 94, 26, 0.25);
             background: rgba(255, 255, 255, 1);
+            animation-play-state: paused;
+        }
+
+        .card:nth-child(2n) {
+            animation-delay: -2.2s;
+        }
+
+        .card:nth-child(3n) {
+            animation-delay: -4.4s;
+        }
+
+        .card:nth-child(4n) {
+            animation-delay: -6.6s;
+        }
+
+        @keyframes cardBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .card-content {
             padding: 35px;
-            min-height: auto;
-            display: block;
         }
 
         .card h3 {
@@ -153,11 +224,6 @@
         .card li::marker {
             color: var(--accent);
             font-size: 1.2rem;
-        }
-
-        .card p {
-            font-size: 1.1rem;
-            margin: 20px 0 0;
         }
 
         @media (min-width: 601px) {
@@ -192,8 +258,13 @@
                 width: 220px;
             }
 
-            .card-label .name { align-self: center; }
-            .card-label .tagline { align-self: flex-start; }
+            .card-label .name {
+                align-self: center;
+            }
+
+            .card-label .tagline {
+                align-self: flex-start;
+            }
         }
 
         footer {
@@ -207,19 +278,19 @@
 
         @media (max-width: 600px) {
             header {
-                min-height: 48vh;
-                padding: 48px 14px;
+                min-height: 42vh;
+                padding: 42px 14px;
             }
 
             .container {
                 display: grid;
-                grid-template-columns: 120px minmax(0, 1fr);
+                grid-template-columns: 100px minmax(0, 1fr);
                 column-gap: 10px;
                 align-items: start;
-                transform: none;
-                width: auto;
-                margin: 18px auto 0;
-                padding: 0 12px 20px;
+                margin: 14px auto 0;
+                padding: 0 10px 18px;
+                overflow: visible;
+                transform: translateX(-4px);
             }
 
             .card-label {
@@ -227,10 +298,10 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                text-align: left;
-                width: 110px;
-                transform: rotate(-45deg) scale(0.42);
+                width: 118px;
+                transform: rotate(-45deg) scale(0.66);
                 transform-origin: left center;
+                overflow: visible;
             }
 
             .label-layer {
@@ -239,36 +310,48 @@
                 grid-column: 1;
                 grid-row: 1;
                 min-height: 100%;
+                overflow: visible;
             }
 
             .grid {
                 grid-column: 2;
-                transform: none;
-                gap: 14px;
+                transform: translateX(8px);
+                gap: 12px;
             }
 
             .card-label .name {
-                font-size: 0.78rem;
+                font-size: 1.18rem;
+                line-height: 1.05;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 4px;
                 align-self: center;
             }
 
             .card-label .tagline {
-                font-size: 0.62rem;
+                font-size: 0.94rem;
+                margin-top: 4px;
                 align-self: flex-start;
             }
 
             .card {
-                min-height: 0;
+                aspect-ratio: auto;
+                min-height: auto;
             }
 
             .card-content {
+                height: 100%;
                 min-height: 0;
-                padding: 18px 16px;
+                padding: 18px 18px 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                overflow: hidden;
             }
 
             .card h3 {
-                font-size: 1.15rem;
-                padding-bottom: 10px;
+                font-size: 1.12rem;
+                padding-bottom: 9px;
+                margin-bottom: 0;
             }
 
             .card ul {
@@ -277,14 +360,9 @@
             }
 
             .card li {
-                font-size: 0.86rem;
+                font-size: 0.92rem;
                 margin-bottom: 8px;
-                line-height: 1.35;
-            }
-
-            .card p {
-                font-size: 0.88rem;
-                margin-top: 12px;
+                line-height: 1.38;
             }
         }
     </style>
@@ -321,7 +399,7 @@
     </div>
 
     <div class="grid">
-        <div class="card" id="tourismus">
+        <div class="card">
             <div class="card-content">
                 <h3>Vörs am Kiss-Balaton</h3>
                 <ul>
@@ -400,8 +478,7 @@
         function positionLabels() {
             const containerRect = document.querySelector('.container').getBoundingClientRect();
             const isMobile = window.matchMedia('(max-width: 600px)').matches;
-            const mobileOffset = 26;
-            const desktopOffset = 70;
+            const topOffset = isMobile ? 22 : 70;
 
             labels.forEach((label, index) => {
                 const card = cards[index];
@@ -409,7 +486,7 @@
                 const cardRect = card.getBoundingClientRect();
                 const labelHeight = label.offsetHeight || 0;
                 label.style.left = '0';
-                label.style.top = `${cardRect.top - containerRect.top + (cardRect.height / 2) - (labelHeight / 2) + (isMobile ? mobileOffset : desktopOffset)}px`;
+                label.style.top = `${cardRect.top - containerRect.top + (cardRect.height / 2) - (labelHeight / 2) + topOffset}px`;
             });
         }
 
