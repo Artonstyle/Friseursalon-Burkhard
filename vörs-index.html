@@ -207,18 +207,19 @@
 
         @media (max-width: 600px) {
             header {
-                min-height: 52vh;
-                padding: 56px 14px;
+                min-height: 48vh;
+                padding: 48px 14px;
             }
 
             .container {
                 display: grid;
-                grid-template-columns: 320px minmax(0, 1fr);
-                column-gap: 18px;
+                grid-template-columns: 120px minmax(0, 1fr);
+                column-gap: 10px;
                 align-items: start;
-                transform: translateX(-34px) scale(0.78);
-                transform-origin: top left;
-                width: calc(100% / 0.78);
+                transform: none;
+                width: auto;
+                margin: 18px auto 0;
+                padding: 0 12px 20px;
             }
 
             .card-label {
@@ -227,8 +228,8 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: left;
-                width: 220px;
-                transform: rotate(-45deg) scale(0.72);
+                width: 110px;
+                transform: rotate(-45deg) scale(0.42);
                 transform-origin: left center;
             }
 
@@ -242,20 +243,49 @@
 
             .grid {
                 grid-column: 2;
-                transform: translateX(-120px);
+                transform: none;
+                gap: 14px;
             }
 
             .card-label .name {
-                font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+                font-size: 0.78rem;
                 align-self: center;
             }
 
             .card-label .tagline {
-                font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+                font-size: 0.62rem;
                 align-self: flex-start;
             }
 
-            .card-content { padding: 35px; }
+            .card {
+                min-height: 0;
+            }
+
+            .card-content {
+                min-height: 0;
+                padding: 18px 16px;
+            }
+
+            .card h3 {
+                font-size: 1.15rem;
+                padding-bottom: 10px;
+            }
+
+            .card ul {
+                margin-top: 12px;
+                padding-left: 18px;
+            }
+
+            .card li {
+                font-size: 0.86rem;
+                margin-bottom: 8px;
+                line-height: 1.35;
+            }
+
+            .card p {
+                font-size: 0.88rem;
+                margin-top: 12px;
+            }
         }
     </style>
 </head>
@@ -368,16 +398,18 @@
         if (!labels.length || !cards.length) return;
 
         function positionLabels() {
-            if (window.matchMedia('(max-width: 600px)').matches) return;
-
             const containerRect = document.querySelector('.container').getBoundingClientRect();
+            const isMobile = window.matchMedia('(max-width: 600px)').matches;
+            const mobileOffset = 26;
+            const desktopOffset = 70;
+
             labels.forEach((label, index) => {
                 const card = cards[index];
                 if (!card) return;
                 const cardRect = card.getBoundingClientRect();
                 const labelHeight = label.offsetHeight || 0;
                 label.style.left = '0';
-                label.style.top = `${cardRect.top - containerRect.top + (cardRect.height / 2) - (labelHeight / 2) + 70}px`;
+                label.style.top = `${cardRect.top - containerRect.top + (cardRect.height / 2) - (labelHeight / 2) + (isMobile ? mobileOffset : desktopOffset)}px`;
             });
         }
 
